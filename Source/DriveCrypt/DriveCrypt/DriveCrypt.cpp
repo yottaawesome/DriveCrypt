@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "DriveCrypt.h"
+#include "DynamicLibrary.h"
 
 #define MAX_LOADSTRING 100
 
@@ -36,9 +37,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	// Perform application initialization:
 	if (!InitInstance (hInstance, nCmdShow))
-	{
 		return FALSE;
-	}
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DRIVECRYPT));
 

@@ -1,14 +1,13 @@
-﻿Build started 31/03/2015 4:43:41 AM.
+﻿Build started 4/04/2015 10:53:06 PM.
      1>Project "C:\Users\Monarch\Documents\GitHub\DriveCrypt\Source\DriveCrypt\Static.Win32.DLLWrapper\Static.Win32.DLLWrapper.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Static.Win32.DLLWrapper.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Shared\DynamicLibrary.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Monarch\Documents\GitHub\DriveCrypt\Source\DriveCrypt\Shared\ExportedHeaders /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt DynamicLibrary.cpp
          DynamicLibrary.cpp
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Monarch\Documents\GitHub\DriveCrypt\Source\DriveCrypt\Debug\Static.Win32.DLLWrapper.lib" /NOLOGO Debug\DynamicLibrary.obj
-         Debug\stdafx.obj
          Static.Win32.DLLWrapper.vcxproj -> C:\Users\Monarch\Documents\GitHub\DriveCrypt\Source\DriveCrypt\Debug\Static.Win32.DLLWrapper.lib
      1>Done Building Project "C:\Users\Monarch\Documents\GitHub\DriveCrypt\Source\DriveCrypt\Static.Win32.DLLWrapper\Static.Win32.DLLWrapper.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.67
+Time Elapsed 00:00:00.75

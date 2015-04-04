@@ -17,16 +17,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ILogger.h">
+    <ClInclude Include="ExportedHeaders\ILogger.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicLibrary.h">
+    <ClInclude Include="ExportedHeaders\DynamicLibrary.h">
       <Filter>Header Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="StringConverter.h">
+    <ClInclude Include="ExportedHeaders\StringConverter.h">
       <Filter>Header Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="ExportedHeaders\Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

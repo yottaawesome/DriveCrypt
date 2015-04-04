@@ -79,10 +79,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DynamicLibrary.h" />
-    <ClInclude Include="ILogger.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="StringConverter.h" />
+    <ClInclude Include="ExportedHeaders\Common.h" />
+    <ClInclude Include="ExportedHeaders\DynamicLibrary.h" />
+    <ClInclude Include="ExportedHeaders\ILogger.h" />
+    <ClInclude Include="ExportedHeaders\StringConverter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -29,5 +29,14 @@
     <ClInclude Include="ExportedHeaders\Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ExportedHeaders\IWin32Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportedHeaders\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportedHeaders\IWin32Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

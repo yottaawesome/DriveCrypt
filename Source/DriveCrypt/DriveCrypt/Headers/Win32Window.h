@@ -2,10 +2,11 @@
 
 #include "Common.h"
 #include "IWin32Application.h"
+#include "IWin32Window.h"
 
 #define MAX_LOADSTRING 100
 
-class Win32Window
+class Win32Window : public IWin32Window
 {
 public:
 	Win32Window(IWin32Application& app);

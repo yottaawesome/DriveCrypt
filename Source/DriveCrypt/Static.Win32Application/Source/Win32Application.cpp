@@ -1,5 +1,5 @@
+#include "IWin32Window.h"
 #include "../Headers/Win32Application.h"
-#include "../Headers/Win32Window.h"
 
 /// Win32Application
 HINSTANCE Win32Application::GetInstance()
@@ -22,36 +22,33 @@ int Win32Application::MainLoop()
 	// Main message loop:
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
-		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+		if (!TranslateAccelerator(msg.hwnd, this->GetAccelerator(), &msg))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
 	}
 
-	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DRIVECRYPT));
+	this->LoadWin32Accelerators();
 
 	return (int)msg.wParam;
 }
 
 LRESULT CALLBACK Win32Application::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	Win32Window* pThis = nullptr;
+	IWin32Window* pThis = nullptr;
 
 	if (message == WM_NCCREATE)
 	{
 		CREATESTRUCT* pCreate = (CREATESTRUCT*)lParam;
-		Win32Window* pThis = (Win32Window*)pCreate->lpCreateParams;
+		IWin32Window* pThis = (IWin32Window*)pCreate->lpCreateParams;
 		SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pThis);
 		pThis->SetHwnd(hWnd);
 	}
 	else
 	{
-		pThis = (Win32Window*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
+		pThis = (IWin32Window*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
 	}
 
-	if (pThis)
-		return pThis->Process(message, wParam, lParam);
-	else
-		return DefWindowProc(hWnd, message, wParam, lParam);
+	return pThis ? pThis->Process(message, wParam, lParam) : DefWindowProc(hWnd, message, wParam, lParam);
 }

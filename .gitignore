@@ -50,3 +50,4 @@ Temporary Items
 /Source/DriveCrypt/*.sdf
 /Source/DriveCrypt/ipch
 /Source/DriveCrypt/*.suo
+/Source/DriveCrypt/Static.Win32Application/Debug

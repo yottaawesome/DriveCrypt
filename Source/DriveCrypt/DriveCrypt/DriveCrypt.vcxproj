@@ -85,17 +85,14 @@
     <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\DriveCrypt.h" />
     <ClInclude Include="Headers\DriveCryptApplication.h" />
-    <ClInclude Include="Headers\IWin32Application.h" />
     <ClInclude Include="Headers\Resource.h" />
     <ClInclude Include="Headers\targetver.h" />
-    <ClInclude Include="Headers\Win32Application.h" />
     <ClInclude Include="Headers\Win32Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Win32Application.cpp" />
-    <ClCompile Include="Source\Win32Window.cpp" />
     <ClCompile Include="Source\DriveCrypt.cpp" />
     <ClCompile Include="Source\DriveCryptApplication.cpp" />
+    <ClCompile Include="Source\Win32Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DriveCrypt.rc" />

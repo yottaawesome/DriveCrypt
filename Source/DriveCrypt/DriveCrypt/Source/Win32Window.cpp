@@ -1,5 +1,6 @@
 #include "../Headers/Common.h"
 #include "../Headers/Win32Window.h"
+#include "IWin32Application.h"
 
 /// Window
 Win32Window::Win32Window(IWin32Application& app) : app(app)

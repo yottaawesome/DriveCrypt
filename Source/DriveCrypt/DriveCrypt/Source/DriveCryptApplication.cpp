@@ -1,14 +1,13 @@
 #include "../Headers/DriveCryptApplication.h"
 
 /// DriveCrypt
-DriveCrypt::DriveCrypt(HINSTANCE hinst, int nCmdShow) : mainWindow(*this)
+DriveCrypt::DriveCrypt(int nCmdShow) : mainWindow(*this)
 {
-	this->hInstance = hinst;
+	this->hInstance = GetModuleHandle(nullptr);
 	this->nCmdShow = nCmdShow;
 }
 
-int DriveCrypt::Initialize()
+void DriveCrypt::Initialize()
 {
 	mainWindow.Initialize();
-	return this->MainLoop();
 }

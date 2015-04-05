@@ -41,6 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -81,12 +82,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\DriveCrypt.h" />
-    <ClInclude Include="Headers\Application.h" />
+    <ClInclude Include="Headers\DriveCryptApplication.h" />
+    <ClInclude Include="Headers\IWin32Application.h" />
     <ClInclude Include="Headers\Resource.h" />
     <ClInclude Include="Headers\targetver.h" />
+    <ClInclude Include="Headers\Win32Application.h" />
+    <ClInclude Include="Headers\Win32Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Win32Application.cpp" />
+    <ClCompile Include="Source\Win32Window.cpp" />
     <ClCompile Include="Source\DriveCrypt.cpp" />
     <ClCompile Include="Source\DriveCryptApplication.cpp" />
   </ItemGroup>

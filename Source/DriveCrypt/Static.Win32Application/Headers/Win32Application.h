@@ -13,9 +13,6 @@ public:
 	virtual int GetCmdShow() override;
 	virtual SUBCLASSPROC GetControlMessagePump() override;
 
-	//static LRESULT CALLBACK	WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-	//static LRESULT CALLBACK DefCtrlProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData);
-
 protected:
 	int nCmdShow;
 	HINSTANCE hInstance; // current instance

@@ -38,5 +38,11 @@
     <ClInclude Include="ExportedHeaders\IWin32Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ExportedHeaders\IWin32Control.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportedHeaders\IFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

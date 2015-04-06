@@ -82,10 +82,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Button.h" />
     <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\DriveCrypt.h" />
     <ClInclude Include="Headers\DriveCryptApplication.h" />
-    <ClInclude Include="Headers\IWin32Control.h" />
+    <ClInclude Include="Headers\Factory.h" />
     <ClInclude Include="Headers\Resource.h" />
     <ClInclude Include="Headers\targetver.h" />
     <ClInclude Include="Headers\DriveCryptMainWindow.h" />
@@ -95,6 +96,7 @@
     <ClCompile Include="Source\DriveCrypt.cpp" />
     <ClCompile Include="Source\DriveCryptApplication.cpp" />
     <ClCompile Include="Source\DriveCryptMainWindow.cpp" />
+    <ClCompile Include="Source\Factory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DriveCrypt.rc" />

@@ -58,7 +58,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)$(Configuration)\Static.Win32.DLLWrapper.lib;$(SolutionDir)$(Configuration)\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)$(Configuration)\*.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,14 +85,16 @@
     <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\DriveCrypt.h" />
     <ClInclude Include="Headers\DriveCryptApplication.h" />
+    <ClInclude Include="Headers\IWin32Control.h" />
     <ClInclude Include="Headers\Resource.h" />
     <ClInclude Include="Headers\targetver.h" />
-    <ClInclude Include="Headers\Win32Window.h" />
+    <ClInclude Include="Headers\DriveCryptMainWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Button.cpp" />
     <ClCompile Include="Source\DriveCrypt.cpp" />
     <ClCompile Include="Source\DriveCryptApplication.cpp" />
-    <ClCompile Include="Source\Win32Window.cpp" />
+    <ClCompile Include="Source\DriveCryptMainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DriveCrypt.rc" />

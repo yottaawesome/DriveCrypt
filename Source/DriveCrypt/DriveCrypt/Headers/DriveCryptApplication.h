@@ -2,7 +2,7 @@
 
 #include "Common.h"
 #include "IWin32Application.h"
-#include "Win32Window.h"
+#include "DriveCryptMainWindow.h"
 #include "../../Static.Win32Application/Headers/Win32Application.h"
 
 class DriveCrypt : public Win32Application
@@ -14,7 +14,7 @@ public:
 protected:
 	HACCEL hAccelTable;
 
-	Win32Window mainWindow;
+	DriveCryptMainWindow mainWindow;
 	virtual HACCEL GetAccelerator() override;
 	virtual void LoadWin32Accelerators() override;
 };

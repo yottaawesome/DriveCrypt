@@ -1,5 +1,7 @@
 #include "IWin32Window.h"
 #include "../Headers/Win32Application.h"
+#include "../Headers/StaticFunctions.h"
+#include  <Commctrl.h>
 
 /// Win32Application
 HINSTANCE Win32Application::GetInstance()
@@ -14,7 +16,7 @@ int Win32Application::GetCmdShow()
 
 WNDPROC Win32Application::GetWindowMessagePump()
 {
-	return Win32Application::WndProc;
+	return Static::WndProc;
 }
 
 int Win32Application::MainLoop()
@@ -34,21 +36,7 @@ int Win32Application::MainLoop()
 	return (int)msg.wParam;
 }
 
-LRESULT CALLBACK Win32Application::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+SUBCLASSPROC Win32Application::GetControlMessagePump()
 {
-	IWin32Window* pThis = nullptr;
-
-	if (message == WM_NCCREATE)
-	{
-		CREATESTRUCT* pCreate = (CREATESTRUCT*)lParam;
-		IWin32Window* pThis = (IWin32Window*)pCreate->lpCreateParams;
-		SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pThis);
-		pThis->SetHwnd(hWnd);
-	}
-	else
-	{
-		pThis = (IWin32Window*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
-	}
-
-	return pThis ? pThis->Process(message, wParam, lParam) : DefWindowProc(hWnd, message, wParam, lParam);
+	return Static::DefCtrlProc;
 }

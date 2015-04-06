@@ -33,7 +33,10 @@
     <ClInclude Include="Headers\DriveCryptApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Win32Window.h">
+    <ClInclude Include="Headers\DriveCryptMainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\IWin32Control.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -57,7 +60,10 @@
     <ClCompile Include="Source\DriveCryptApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Win32Window.cpp">
+    <ClCompile Include="Source\DriveCryptMainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

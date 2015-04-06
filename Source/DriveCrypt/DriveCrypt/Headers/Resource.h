@@ -3,6 +3,8 @@
 // Used by DriveCrypt.rc
 //
 
+#define WM_CONTROL_CREATED (WM_USER + 0x0001)
+
 #define IDS_APP_TITLE			103
 
 #define IDR_MAINFRAME			128
@@ -14,6 +16,7 @@
 #define IDI_SMALL				108
 #define IDC_DRIVECRYPT			109
 #define IDC_MYICON				2
+#define ID_BUTTON1				130
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1
 #endif

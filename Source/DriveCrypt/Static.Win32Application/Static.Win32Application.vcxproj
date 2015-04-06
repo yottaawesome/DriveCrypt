@@ -80,9 +80,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\StaticFunctions.cpp" />
     <ClCompile Include="Source\Win32Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Common.h" />
+    <ClInclude Include="Headers\StaticFunctions.h" />
+    <ClInclude Include="Headers\targetver.h" />
     <ClInclude Include="Headers\Win32Application.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

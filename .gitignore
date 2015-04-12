@@ -52,3 +52,5 @@ Temporary Items
 /Source/DriveCrypt/*.suo
 /Source/DriveCrypt/Static.Win32Application/Debug
 /Source/DriveCrypt/DriveCrypt
+/Source/DriveCrypt/Experimental/Debug
+/Source/DriveCrypt/Static.MemoryManagement/Debug

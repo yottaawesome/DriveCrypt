@@ -80,6 +80,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Button.cpp" />
     <ClCompile Include="Source\CriticalSection.cpp" />
     <ClCompile Include="Source\StaticFunctions.cpp" />
     <ClCompile Include="Source\Thread.cpp" />

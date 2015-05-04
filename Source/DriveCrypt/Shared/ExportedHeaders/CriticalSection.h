@@ -9,3 +9,12 @@ class CriticalSection
     protected:
         CRITICAL_SECTION* cs;
 };
+
+class CriticalSectionController
+{
+public:
+	CriticalSectionController();
+	virtual ~CriticalSectionController();
+protected:
+	CRITICAL_SECTION* cs;
+};

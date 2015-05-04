@@ -92,7 +92,6 @@
     <ClInclude Include="Headers\DriveCryptMainWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Button.cpp" />
     <ClCompile Include="Source\DriveCrypt.cpp" />
     <ClCompile Include="Source\DriveCryptApplication.cpp" />
     <ClCompile Include="Source\DriveCryptMainWindow.cpp" />

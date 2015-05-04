@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ExportedHeaders\Button.h" />
     <ClInclude Include="ExportedHeaders\Common.h" />
     <ClInclude Include="ExportedHeaders\CriticalSection.h" />
     <ClInclude Include="ExportedHeaders\DynamicLibrary.h" />

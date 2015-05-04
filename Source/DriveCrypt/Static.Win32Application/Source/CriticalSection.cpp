@@ -10,3 +10,13 @@ CriticalSection::~CriticalSection()
 {
     LeaveCriticalSection(cs);
 }
+
+CriticalSectionController::CriticalSectionController()
+{
+	EnterCriticalSection(cs);
+}
+
+CriticalSectionController::~CriticalSectionController()
+{
+	LeaveCriticalSection(cs);
+}

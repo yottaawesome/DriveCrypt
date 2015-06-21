@@ -54,3 +54,4 @@ Temporary Items
 /Source/DriveCrypt/DriveCrypt
 /Source/DriveCrypt/Experimental/Debug
 /Source/DriveCrypt/Static.MemoryManagement/Debug
+/Source/DriveCrypt/Experimental/*.user

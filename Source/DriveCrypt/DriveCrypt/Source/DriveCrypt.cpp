@@ -1,6 +1,7 @@
 #include "../Headers/DriveCrypt.h"
 #include "../Headers/DriveCryptApplication.h"
 #include "DynamicLibrary.h"
+#include "IFactory.h"
 
 template<typename T>
 class Proxy
@@ -35,6 +36,11 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
+
+	IFactory<AB> a;
+	a();
+
+	//
 
 	IWin32Application& application = DriveCrypt(nCmdShow);
 	application.Initialize();

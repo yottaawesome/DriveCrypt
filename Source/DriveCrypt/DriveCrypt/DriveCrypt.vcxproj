@@ -87,6 +87,7 @@
     <ClInclude Include="Headers\DriveCrypt.h" />
     <ClInclude Include="Headers\DriveCryptApplication.h" />
     <ClInclude Include="Headers\DriveCryptMainWindow.h" />
+    <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\Resource.h" />
     <ClInclude Include="Headers\targetver.h" />
   </ItemGroup>

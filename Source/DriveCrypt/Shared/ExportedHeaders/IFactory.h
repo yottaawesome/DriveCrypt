@@ -3,15 +3,27 @@
 #include "Common.h"
 #include "IWin32Control.h"
 
+class AB { };
+
 template<typename T>
 class IFactory
 {
 public:
-	virtual T operator() () = 0;
+	IFactory() {}
+	virtual T* operator() () = 0;
 };
 
-//class UIFactory
-//{
-//public:
-//	virtual IWin32Control CreateButton();
-//};
+template<>
+class IFactory<AB>
+{
+public: 
+	IFactory()
+	{
+		MessageBox(nullptr, L"Blah", L"Blah", MB_OK);
+	};
+
+	virtual AB* operator()()
+	{ 
+		return new AB(); 
+	};
+};

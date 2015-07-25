@@ -3,6 +3,7 @@
 #include "Button.h"
 #include "../../Static.Win32Application/Headers/StaticFunctions.h"
 #include  <Commctrl.h>
+#include "../Headers/Variadic.h"
 
 Button::Button(IWin32Window& parent, unsigned int controlId) : parent(parent), controlId(controlId) { }
 Button::Button(IWin32Window* parent, unsigned int controlId) : parent(*parent), controlId(controlId)  { }

@@ -1,7 +1,12 @@
 #include "..\Headers\DriveCryptMainWindow.h"
+#include "../Headers/Exceptions.h"
+
+using namespace std;
 
 DriveCryptMainWindow::DriveCryptMainWindow(IWin32Application* application) : application(application)
 {
+	if (application == nullptr)
+		throw DriveCryptException("Null Application pointer to Main Window");
 }
 
 DriveCryptMainWindow::DriveCryptMainWindow(IWin32Application& application) : application(&application)
@@ -32,8 +37,20 @@ void DriveCryptMainWindow::Initialize()
 
 	RegisterClassEx(&wcex);
 
-	hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, this);
+	hWnd = CreateWindow
+		(
+			szWindowClass, // class name
+			szTitle, // window title
+			WS_OVERLAPPEDWINDOW, // window styles
+			CW_USEDEFAULT, // initial horizontal x position
+			0,  // initial horizontal y position
+			CW_USEDEFAULT,  // window width
+			0, // window width
+			NULL, // parent HWND
+			NULL, // HWND menu/child
+			hInstance, // instance of the module
+			this // additional data
+		);
 
 	if (!hWnd)
 		return;

@@ -91,6 +91,7 @@
     <ClInclude Include="Headers\StaticFunctions.h" />
     <ClInclude Include="Headers\targetver.h" />
     <ClInclude Include="Headers\Thread.h" />
+    <ClInclude Include="Headers\Variadic.h" />
     <ClInclude Include="Headers\Win32Application.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

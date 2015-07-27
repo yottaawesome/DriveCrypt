@@ -1,8 +1,7 @@
 
 #include "../Headers/DriveCrypt.h"
 #include "../Headers/DriveCryptApplication.h"
-#include "DynamicLibrary.h"
-#include "IFactory.h"
+#include "../../Shared/ExportedHeaders/IFactory.h"
 
 template<typename T>
 class Proxy

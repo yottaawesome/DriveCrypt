@@ -1,5 +1,5 @@
-#include "Common.h"
-#include "CriticalSection.h"
+#include "../Headers/Common.h"
+#include "../../Shared/ExportedHeaders/CriticalSection.h"
 
 CriticalSection::CriticalSection(LPCRITICAL_SECTION cs) : cs(cs)
 {

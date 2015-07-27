@@ -1,6 +1,6 @@
 #include "../Headers/Common.h"
-#include "IWin32Window.h"
-#include "Button.h"
+#include "../../Shared/ExportedHeaders/IWin32Window.h"
+#include "../../Shared/ExportedHeaders/Button.h"
 #include "../../Static.Win32Application/Headers/StaticFunctions.h"
 #include  <Commctrl.h>
 #include "../Headers/Variadic.h"

@@ -2,7 +2,7 @@
 #include <locale>
 #include <codecvt>
 #include <memory>
-#include "StringConverter.h"
+#include "../../Shared/ExportedHeaders/StringConverter.h"
 
 using namespace std;
 

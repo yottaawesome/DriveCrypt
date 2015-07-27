@@ -1,6 +1,6 @@
 #pragma once
 #include "Common.h"
-#include "IWin32Window.h"
+#include "../../Shared/ExportedHeaders/IWin32Window.h"
 
 class Static
 {

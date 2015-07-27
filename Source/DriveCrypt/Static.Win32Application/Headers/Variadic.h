@@ -2,7 +2,7 @@
 
 #include "Common.h"
 #include "../Headers/Win32Application.h"
-#include "IFactory.h"
+#include "../../Shared/ExportedHeaders/IFactory.h"
 
 template<typename... T>
 class Injectable

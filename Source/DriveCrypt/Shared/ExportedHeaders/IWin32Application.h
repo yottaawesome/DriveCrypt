@@ -10,5 +10,4 @@ public:
 	virtual WNDPROC GetWindowMessagePump() = 0;
 	virtual SUBCLASSPROC GetControlMessagePump() = 0;
 	virtual HINSTANCE GetInstance() = 0;
-	virtual int GetCmdShow() = 0;
 };

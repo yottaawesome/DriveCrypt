@@ -55,7 +55,8 @@ void DriveCryptMainWindow::Initialize()
 	if (!hWnd)
 		return;
 
-	ShowWindow(hWnd, this->application->GetCmdShow());
+	// See https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548%28v=vs.85%29.aspx
+	ShowWindow(hWnd, SW_SHOWDEFAULT);
 	UpdateWindow(hWnd);
 }
 

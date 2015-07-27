@@ -8,7 +8,7 @@
 class DriveCrypt : public Win32Application
 {
 public:
-	DriveCrypt(int nCmdShow);
+	DriveCrypt();
 	virtual void Initialize() override;
 
 protected:

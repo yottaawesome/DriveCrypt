@@ -10,7 +10,6 @@ class Win32Application : public IWin32Application
 public:
 	virtual WNDPROC GetWindowMessagePump() override;
 	virtual HINSTANCE GetInstance() override;
-	virtual int GetCmdShow() override;
 	virtual SUBCLASSPROC GetControlMessagePump() override;
 
 protected:

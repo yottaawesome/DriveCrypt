@@ -9,11 +9,6 @@ HINSTANCE Win32Application::GetInstance()
 	return this->hInstance;
 }
 
-int Win32Application::GetCmdShow()
-{
-	return this->nCmdShow;
-}
-
 WNDPROC Win32Application::GetWindowMessagePump()
 {
 	return Static::WndProc;

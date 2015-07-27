@@ -51,7 +51,8 @@ Temporary Items
 /Source/DriveCrypt/ipch
 /Source/DriveCrypt/*.suo
 /Source/DriveCrypt/Static.Win32Application/Debug
-/Source/DriveCrypt/DriveCrypt
+/Source/DriveCrypt/DriveCrypt/Debug
 /Source/DriveCrypt/Experimental/Debug
 /Source/DriveCrypt/Static.MemoryManagement/Debug
 /Source/DriveCrypt/Experimental/*.user
+*.aps

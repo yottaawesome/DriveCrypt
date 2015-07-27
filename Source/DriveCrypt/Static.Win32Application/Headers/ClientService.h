@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IFactory.h"
+#include "../../Shared/ExportedHeaders/IFactory.h"
 #include "../Headers/Environment.h"
 
 template<>

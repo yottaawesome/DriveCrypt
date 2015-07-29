@@ -1,44 +1,30 @@
-
 #include "../Headers/DriveCrypt.h"
 #include "../Headers/DriveCryptApplication.h"
-#include "../../Shared/ExportedHeaders/IFactory.h"
+#include "../../Static.MemoryManagement/Headers/PointerWrapper.h"
+#include "../../Static.Win32Application/Headers/ClientService.h"
 
-template<typename T>
-class Proxy
+class Test 
 {
 public:
-	Proxy(T t);
-	T& operator->();
-	T* create();
-protected:
-	T t;
+	Test()
+	{
+		IFactory<A> a;
+		prop = a();
+	}
+	PointerWrapper<A> prop;
 };
-
-template<typename T>
-Proxy<T>::Proxy(T t)
-{
-
-}
-
-template<typename T>
-T& Proxy<T>::operator->()
-{
-	return t;
-}
-
-template<typename T>
-T* Proxy<T>::create()
-{
-	return new T();
-}
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPTSTR lpCmdLine, _In_ int nCmdShow)
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
-	IFactory<AB> a;
-	a();
+	//IFactory<AB> a;
+	//a();
+	//PointerWrapper<AB> pw = new AB();
+
+	Test a;
+	a.prop->Blah();
 
 	IWin32Application& application = DriveCrypt();
 	application.Initialize();

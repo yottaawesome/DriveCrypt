@@ -93,6 +93,7 @@
     <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\Environment.h" />
     <ClInclude Include="Headers\Globals.h" />
+    <ClInclude Include="Headers\ServiceFactories.h" />
     <ClInclude Include="Headers\StaticFunctions.h" />
     <ClInclude Include="Headers\targetver.h" />
     <ClInclude Include="Headers\Thread.h" />

@@ -1,6 +1,7 @@
 #include "../../Shared/ExportedHeaders/IWin32Window.h"
 #include "../Headers/Win32Application.h"
 #include "../Headers/StaticFunctions.h"
+#include "../../Static.MemoryManagement/Headers/PointerWrapper.h"
 #include  <Commctrl.h>
 
 /// Win32Application

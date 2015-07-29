@@ -1,32 +1,18 @@
 #pragma once
 
-#include "../../Shared/ExportedHeaders/IFactory.h"
-#include "../Headers/Environment.h"
-
-template<>
-class IFactory<ApplicationEnvironment>
-{
-public:
-	IFactory()
-	{
-		MessageBox(nullptr, L"Blah", L"Blah", MB_OK);
-	};
-
-	virtual AB* operator()()
-	{
-		return new AB();
-	};
-};
+#include "../Headers/ServiceFactories.h"
+#include "../../Static.MemoryManagement/Headers/PointerWrapper.h"
 
 template<typename T>
 class ClientService
 {
 public:
-	ClientService()
-	{
-		IFactory<T> a;
-		this->param = a(); //Creator::Create<T>();
-	}
+	ClientService() : param(typeFactory()) { }
+
 protected:
-	T* param;
+	static IFactory<T> typeFactory;
+	PointerWrapper<T> param;
 };
+
+template<typename T>
+IFactory<T> ClientService<T>::typeFactory = IFactory<T>();

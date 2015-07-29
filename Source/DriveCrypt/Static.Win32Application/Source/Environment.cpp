@@ -1,5 +1,10 @@
 #include "../Headers/Environment.h"
 
-ApplicationEnvironment::ApplicationEnvironment(int nCmdShow) : nCmdShow(nCmdShow)
+ApplicationEnvironment::ApplicationEnvironment()
 {
 }
+
+template<typename ...T>
+class A
+{
+};

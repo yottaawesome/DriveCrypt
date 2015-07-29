@@ -16,3 +16,13 @@ protected:
 
 template<typename T>
 IFactory<T> ClientService<T>::typeFactory = IFactory<T>();
+
+class FactoryService
+{
+public:
+
+protected:
+	 static Factories TypeFactory;
+};
+
+Factories FactoryService::TypeFactory = Factories();

@@ -1,12 +1,20 @@
 #pragma once
 
 #include "Common.h"
-#include "IWin32Control.h"
 
 template<typename T>
 class IFactory
 {
 public:
-	IFactory() {}
 	virtual T* operator() () = 0;
+};
+
+class Factories
+{
+public:
+	template<typename T>
+	IFactory<T> Get() 
+	{ 
+		return IFactory<T>(); 
+	}
 };

@@ -3,13 +3,12 @@
 #include "../../Static.MemoryManagement/Headers/PointerWrapper.h"
 #include "../../Static.Win32Application/Headers/ClientService.h"
 
-class Test 
+class Test : public FactoryService
 {
 public:
 	Test()
 	{
-		IFactory<A> a;
-		prop = a();
+		prop = TypeFactory.Get<A>()();
 	}
 	PointerWrapper<A> prop;
 };

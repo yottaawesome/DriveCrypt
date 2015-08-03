@@ -4,22 +4,19 @@
 
 using namespace std;
 
-namespace Infrastructure
+class DynamicLibrary
 {
-	class DynamicLibrary
-	{
-		public:
-			DynamicLibrary(wstring& str);
-			DynamicLibrary(wstring&& str);
+	public:
+		DynamicLibrary(wstring& str);
+		DynamicLibrary(wstring&& str);
 
-			template<typename T> T resolve(string& s);
-			template<typename T> T resolve(string&& s);
-			virtual void* resolve(wstring& s);
-			virtual void* resolve(wstring&& s);
-			virtual ~DynamicLibrary();
+		template<typename T> T resolve(string& s);
+		template<typename T> T resolve(string&& s);
+		virtual void* resolve(wstring& s);
+		virtual void* resolve(wstring&& s);
+		virtual ~DynamicLibrary();
 
-		protected:
-			HINSTANCE handle;
-			wstring libName;
-	};
-}
+	protected:
+		HINSTANCE handle;
+		wstring libName;
+};

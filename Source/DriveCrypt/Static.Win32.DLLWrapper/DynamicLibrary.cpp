@@ -4,7 +4,6 @@
 #include "../Shared/ExportedHeaders/StringConverter.h"
 
 using namespace std;
-using namespace Infrastructure;
 
 DynamicLibrary::DynamicLibrary(wstring& str)
 	: libName(str)

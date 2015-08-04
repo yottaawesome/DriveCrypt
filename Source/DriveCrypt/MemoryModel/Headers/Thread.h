@@ -1,5 +1,6 @@
 #pragma once
-#include "Common.h"
+#include "stdafx.h"
+#include <functional>
 
 using namespace std;
 
@@ -34,3 +35,12 @@ class Thread
 };
 
 typedef void (Thread::*toRun)(void*);
+
+class Runnable : public Thread
+{
+	public:
+		Runnable(function<int()> func);
+	protected:
+		virtual int run() override;
+		function<int()> func;
+};

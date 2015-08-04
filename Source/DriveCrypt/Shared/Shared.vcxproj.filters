@@ -47,9 +47,6 @@
     <ClInclude Include="ExportedHeaders\Proxy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExportedHeaders\CriticalSection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ExportedHeaders\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>

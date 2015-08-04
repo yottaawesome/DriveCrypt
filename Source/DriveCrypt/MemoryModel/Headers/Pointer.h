@@ -7,13 +7,13 @@
 using namespace std;
 
 template<typename T>
-class Pointer
+class Memo
 {
 public:
-	Pointer();
-	Pointer(T* newObject);
-	Pointer(Pointer<T>& newPointerWrapper);
-	virtual ~Pointer();
+	Memo();
+	Memo(T* newObject);
+	Memo(Memo<T>& newPointerWrapper);
+	virtual ~Memo();
 
 	virtual T* operator->();
 	virtual bool operator==(T* comparison);
@@ -29,57 +29,57 @@ protected:
 };
 
 template<typename T>
-map<T*, int> Pointer<T>::memMap = map<T*, int>();
+map<T*, int> Memo<T>::memMap = map<T*, int>();
 
 template<typename T>
-Pointer<T>::Pointer() : hasValidPointer(false), object(nullptr)
+Memo<T>::Memo() : hasValidPointer(false), object(nullptr)
 {
 	InterlockedIncrement(&nMemoryModel);
-	std::wstring s = std::to_wstring(nMemoryModel) + L"\n";
-	OutputDebugString(s.c_str());
+	//std::wstring s = std::to_wstring(nMemoryModel) + L"\n";
+	//OutputDebugString(s.c_str());
 //	OutputDebugString(_T("1\n"));
 }
 
 template<typename T>
-Pointer<T>::Pointer(T* newObject) : hasValidPointer(false), object(nullptr)
+Memo<T>::Memo(T* newObject) : hasValidPointer(false), object(nullptr)
 {
-	OutputDebugString(_T("2\n"));
+	//OutputDebugString(_T("2\n"));
 	AssignAndIncrement(newObject);
 }
 
 template<typename T>
-Pointer<T>::Pointer(Pointer<T>& newPointerWrapper) : hasValidPointer(false), object(nullptr)
+Memo<T>::Memo(Memo<T>& newPointerWrapper) : hasValidPointer(false), object(nullptr)
 {
-	OutputDebugString(_T("3\n"));
+	//OutputDebugString(_T("3\n"));
 	AssignAndIncrement(newPointerWrapper->);
 }
 
 template<typename T>
-Pointer<T>::~Pointer()
+Memo<T>::~Memo()
 {
 	deIncrementAndCleanUp();
 }
 
 template<typename T>
-T* Pointer<T>::operator->()
+T* Memo<T>::operator->()
 {
 	return object;
 }
 
 template<typename T>
-bool Pointer<T>::operator==(T* comparison)
+bool Memo<T>::operator==(T* comparison)
 {
 	return object == comparison;
 }
 
 template<typename T>
-void Pointer<T>::operator=(T* newObject)
+void Memo<T>::operator=(T* newObject)
 {
 	AssignAndIncrement(newObject);
 }
 
 template<typename T>
-void Pointer<T>::AssignAndIncrement(T* newObject)
+void Memo<T>::AssignAndIncrement(T* newObject)
 {
 	if (object == newObject)
 		return;
@@ -92,7 +92,7 @@ void Pointer<T>::AssignAndIncrement(T* newObject)
 }
 
 template<typename T>
-void Pointer<T>::deIncrementAndCleanUp()
+void Memo<T>::deIncrementAndCleanUp()
 {
 	if (object != nullptr)
 	{

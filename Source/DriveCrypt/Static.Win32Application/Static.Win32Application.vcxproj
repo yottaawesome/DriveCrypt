@@ -82,10 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Button.cpp" />
-    <ClCompile Include="Source\CriticalSection.cpp" />
     <ClCompile Include="Source\Environment.cpp" />
     <ClCompile Include="Source\StaticFunctions.cpp" />
-    <ClCompile Include="Source\Thread.cpp" />
     <ClCompile Include="Source\Win32Application.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +94,6 @@
     <ClInclude Include="Headers\ServiceFactories.h" />
     <ClInclude Include="Headers\StaticFunctions.h" />
     <ClInclude Include="Headers\targetver.h" />
-    <ClInclude Include="Headers\Thread.h" />
     <ClInclude Include="Headers\Variadic.h" />
     <ClInclude Include="Headers\Win32Application.h" />
   </ItemGroup>

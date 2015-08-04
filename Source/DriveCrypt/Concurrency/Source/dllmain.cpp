@@ -6,15 +6,15 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	switch (ul_reason_for_call)
 	{
 		case DLL_PROCESS_ATTACH:
-			OutputDebugString(L"DLL process attached\n");
+			OutputDebugString(L"Concurrency.dll attached to process");
 			return true;
 		case DLL_THREAD_ATTACH:
 			return true;
 		case DLL_THREAD_DETACH:
-			OutputDebugString(L"DLL thread detached\n");
 			return true;
 		case DLL_PROCESS_DETACH:
-			OutputDebugString(L"DLL process detached\n");
+			OutputDebugString(L"Concurrency.dll detached from process");
 			return true;
 	}
 }
+

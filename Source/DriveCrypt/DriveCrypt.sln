@@ -40,6 +40,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryModel", "MemoryModel\MemoryModel.vcxproj", "{B72AC6D5-AFBE-41EF-AC15-16619E537738}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Concurrency", "Concurrency\Concurrency.vcxproj", "{C0447343-5601-4B74-AA1C-B779AFB732C0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{66B3864C-1629-4CE0-B778-F994796370AB} = {66B3864C-1629-4CE0-B778-F994796370AB}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utility", "Utility\Utility.vcxproj", "{66B3864C-1629-4CE0-B778-F994796370AB}"
 EndProject

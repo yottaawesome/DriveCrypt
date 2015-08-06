@@ -1,7 +1,7 @@
 //#include "stdafx.h"
 #include <string>
 #include "../Shared/ExportedHeaders/DynamicLibrary.h"
-#include "../Shared/ExportedHeaders/StringConverter.h"
+#include "../Utility/Headers/Utility.h"
 
 using namespace std;
 

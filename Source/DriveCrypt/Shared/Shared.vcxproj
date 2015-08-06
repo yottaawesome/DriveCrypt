@@ -84,12 +84,10 @@
     <ClInclude Include="ExportedHeaders\Common.h" />
     <ClInclude Include="ExportedHeaders\DynamicLibrary.h" />
     <ClInclude Include="ExportedHeaders\IFactory.h" />
-    <ClInclude Include="ExportedHeaders\ILogger.h" />
     <ClInclude Include="ExportedHeaders\IWin32Application.h" />
     <ClInclude Include="ExportedHeaders\IWin32Control.h" />
     <ClInclude Include="ExportedHeaders\IWin32Window.h" />
     <ClInclude Include="ExportedHeaders\Proxy.h" />
-    <ClInclude Include="ExportedHeaders\StringConverter.h" />
     <ClInclude Include="ExportedHeaders\targetver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

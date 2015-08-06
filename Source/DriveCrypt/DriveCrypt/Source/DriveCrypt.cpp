@@ -6,6 +6,8 @@
 #include "../../MemoryModel/Headers/Pointer.h"
 #include "../../Concurrency/Headers/Concurrency.h"
 
+#include "../../Utility/Headers/Utility.h"
+
 //MEMORYMODEL_API int fnMemoryModel();
 
 class Test : public FactoryService
@@ -54,15 +56,14 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 
 	CriticalSection s;
 
-	Test a;
-	a.prop->Blah();
+	//Test a;
+	//a.prop->Blah();
 	//fnMemoryModel();
 	//MEMORYMODEL_API Pointer<A> a = Pointer<A>();
-	//a = new A();
-	CMemoryModel b;
 
-	auto p = Make();
-	p->Do();
+	//Memo<ILogger> logger = UtilityFactory::ConstructLogger();
+	//logger->PrintLine("Hello world!");
+
 
 	IWin32Application& application = DriveCrypt();
 	application.Initialize();

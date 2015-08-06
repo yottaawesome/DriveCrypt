@@ -4,10 +4,12 @@
 
 using namespace std;
 
-Thread::Thread(void* param, bool destroyOnCompletion) : destroyOnCompletion(destroyOnCompletion),
+Thread::Thread(void* param, bool runImmediately, bool destroyOnCompletion) : destroyOnCompletion(destroyOnCompletion),
     status(Thread::READY),
     threadParam(param)
-{   
+{
+	if(runImmediately)
+		this->start();
 }
 
 Thread::~Thread()

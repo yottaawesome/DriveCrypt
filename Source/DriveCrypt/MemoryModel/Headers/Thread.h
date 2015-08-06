@@ -16,7 +16,7 @@ class Thread
             SUSPENDED = 4,
             ABNORMAL_TERMINATION = 5
         };
-        Thread(void* param, bool destroyOnCompletion);
+        Thread(void* param, bool runImmediately, bool destroyOnCompletion);
         virtual ~Thread();
         virtual void start();
         virtual int getStatus();
@@ -25,6 +25,7 @@ class Thread
         virtual void resume();
 	    int priority;
     protected:
+		bool runImmediately;
         int status;
         unsigned int threadId;
         HANDLE hThread;
@@ -39,7 +40,11 @@ typedef void (Thread::*toRun)(void*);
 class Runnable : public Thread
 {
 	public:
-		Runnable(function<int()> func);
+		Runnable(int (*simpleFunc)(), bool runImmediately = false);
+		Runnable(function<int()> func, bool runImmediately = false);
+
+		static void RunThread(int(*simpleFunc)());
+		static void RunThread(function<int()> func);
 	protected:
 		virtual int run() override;
 		function<int()> func;

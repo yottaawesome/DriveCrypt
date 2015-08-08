@@ -8,10 +8,13 @@ using namespace std;
 class Logger : public ILogger
 {
 public:
-	virtual void PrintLine(string value) override;
+#ifdef UNICODE
 	virtual void PrintLine(wstring value) override;
-	virtual void PrintLine(string& value) override;
 	virtual void PrintLine(wstring& value) override;
+#else
+	virtual void PrintLine(string value) override;
+	virtual void PrintLine(string& value) override;
+#endif
 
 	virtual ~Logger();
 };

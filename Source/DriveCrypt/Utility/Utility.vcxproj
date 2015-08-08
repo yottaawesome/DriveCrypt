@@ -155,7 +155,8 @@
     <ClInclude Include="Headers\Utility.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Console.cpp" />
+    <ClCompile Include="Source\AbstractBases.cpp" />
+    <ClCompile Include="Source\Debug.cpp" />
     <ClCompile Include="Source\dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

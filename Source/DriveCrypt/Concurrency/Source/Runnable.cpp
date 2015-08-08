@@ -1,4 +1,4 @@
-#include "../Headers/Thread.h"
+#include "../Headers/Concurrency.h"
 
 Runnable::Runnable(function<int()> func, bool runImmediately) : Thread(this, runImmediately, false), func(func) { }
 

@@ -60,3 +60,6 @@ Temporary Items
 /Source/DriveCrypt/Concurrency/Debug
 /Source/DriveCrypt/Cryptography/Debug
 /Source/DriveCrypt/Utility/Debug
+/Source/DriveCrypt/System/Debug
+/Source/DriveCrypt/System/Release
+Release

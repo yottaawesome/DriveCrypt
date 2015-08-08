@@ -29,21 +29,26 @@ public:
 class UTILITY_API ILogger
 {
 public:
-	virtual void PrintLine(string value) = 0;
+#ifdef UNICODE
 	virtual void PrintLine(wstring value) = 0;
-	virtual void PrintLine(string& value) = 0;
 	virtual void PrintLine(wstring& value) = 0;
-
-	virtual ~ILogger() {};
+#else
+	virtual void PrintLine(string value) = 0;
+	virtual void PrintLine(string& value) = 0;
+#endif
+	virtual ~ILogger() = 0;
 };
 
-class UTILITY_API Console final
+class UTILITY_API Debug final
 {
 public:
-	static void PrintLine(string value);
+#ifdef UNICODE
 	static void PrintLine(wstring value);
-	static void PrintLine(string& value);
 	static void PrintLine(wstring& value);
+#else
+	static void PrintLine(string value);
+	static void PrintLine(string& value);
+#endif
 
 private:
 	virtual void Abstract() = 0;
@@ -53,10 +58,4 @@ class UTILITY_API UtilityFactory final
 {
 public:
 	static ILogger* ConstructLogger();
-};
-
-class UTILITY_API V
-{
-public:
-	void X();
 };

@@ -2,14 +2,22 @@
 
 //
 // SimpleCriticalSection
-SimpleCriticalSection::SimpleCriticalSection(LPCRITICAL_SECTION cs) : cs(cs)
+SimpleCriticalSection::SimpleCriticalSection(LPCRITICAL_SECTION cs) : cs(cs), usingLpCriticalSection(true)
 {
     EnterCriticalSection(cs);
 }
 
+SimpleCriticalSection::SimpleCriticalSection(CriticalSection& cs) : ics(cs), usingLpCriticalSection(false)
+{
+	ics.Enter();
+}
+
 SimpleCriticalSection::~SimpleCriticalSection()
 {
-    LeaveCriticalSection(cs);
+	if (usingLpCriticalSection)
+		LeaveCriticalSection(cs);
+	else
+		ics.Exit();
 }
 
 //
@@ -40,10 +48,11 @@ bool CriticalSection::TryEnter()
 void CriticalSection::Enter()
 {
 	EnterCriticalSection(&cs);
+	this->inCriticalSection = true;
 }
 
 void CriticalSection::Exit()
 {
-	this->inCriticalSection = false;
 	LeaveCriticalSection(&cs);
+	this->inCriticalSection = false;
 }

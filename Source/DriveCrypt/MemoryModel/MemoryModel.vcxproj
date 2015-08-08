@@ -153,7 +153,6 @@
     <ClInclude Include="Headers\Pointer.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\targetver.h" />
-    <ClInclude Include="Headers\Thread.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\dllmain.cpp">
@@ -172,9 +171,7 @@
     </ClCompile>
     <ClCompile Include="Source\MemoryModel.cpp" />
     <ClCompile Include="Source\Pointer.cpp" />
-    <ClCompile Include="Source\Runnable.cpp" />
     <ClCompile Include="Source\stdafx.cpp" />
-    <ClCompile Include="Source\Thread.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,6 +7,7 @@
 #include "../../Concurrency/Headers/Concurrency.h"
 
 #include "../../Utility/Headers/Utility.h"
+#include "../../System/Headers/System.h"
 
 //MEMORYMODEL_API int fnMemoryModel();
 
@@ -63,7 +64,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 
 	//Memo<ILogger> logger = UtilityFactory::ConstructLogger();
 	//logger->PrintLine("Hello world!");
-
+	Memo<IConsole> console = System::GetConsole();
+	console->PrintLine(L"Hello world!");
 
 	IWin32Application& application = DriveCrypt();
 	application.Initialize();

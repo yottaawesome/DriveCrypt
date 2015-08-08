@@ -1,4 +1,4 @@
-#include "../Headers/Thread.h"
+#include "../Headers/Concurrency.h"
 #include <process.h>
 #include <stdexcept>
 

@@ -1,30 +1,28 @@
 #include "../Headers/stdafx.h"
-#include "../Headers/Logger.h"
-
-Logger::~Logger() { }
-
-//use std::to_wstring(value) to convert numbers to strings
+#include "../Headers/Utility.h"
+#include <iostream>
 
 #ifdef UNICODE
-void Logger::PrintLine(wstring value)
+void Debug::PrintLine(wstring value)
 {
 	value.append(L"\n");
 	OutputDebugString(value.c_str());
 }
 
-void Logger::PrintLine(wstring& value)
+void Debug::PrintLine(wstring& value)
 {
 	value.append(L"\n");
 	OutputDebugString(value.c_str());
 }
 #else
-void Logger::PrintLine(string value)
+void Debug::PrintLine(string value)
 {
+	cout << "A" << endl;
 	value.append("\n");
 	OutputDebugString(StringConverter::convertStringToWString(value).c_str());
 }
 
-void Logger::PrintLine(string& value)
+void Debug::PrintLine(string& value)
 {
 	value.append("\n");
 	OutputDebugString(StringConverter::convertStringToWString(value).c_str());

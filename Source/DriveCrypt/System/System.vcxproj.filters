@@ -18,16 +18,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\Utility.h">
+    <ClInclude Include="Headers\System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Logger.h">
+    <ClInclude Include="Headers\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Console.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,16 +38,13 @@
     <ClCompile Include="Source\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\StringConverter.cpp">
+    <ClCompile Include="Source\System.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Logger.cpp">
+    <ClCompile Include="Source\Console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\UtilityFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Debug.cpp">
+    <ClCompile Include="Source\SystemString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\AbstractBases.cpp">

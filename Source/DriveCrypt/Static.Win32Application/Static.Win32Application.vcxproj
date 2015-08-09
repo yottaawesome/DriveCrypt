@@ -14,17 +14,18 @@
     <ProjectGuid>{0868D0DD-899A-4848-99CA-02B3076977C2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>StaticWin32Application</RootNamespace>
-    <ProjectName>Static.Win32.Application</ProjectName>
+    <ProjectName>Win32GUI</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -57,6 +58,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -75,12 +77,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\dllmain.cpp" />
     <ClCompile Include="Source\Button.cpp" />
     <ClCompile Include="Source\Environment.cpp" />
     <ClCompile Include="Source\StaticFunctions.cpp" />
@@ -93,6 +97,7 @@
     <ClInclude Include="Headers\Globals.h" />
     <ClInclude Include="Headers\ServiceFactories.h" />
     <ClInclude Include="Headers\StaticFunctions.h" />
+    <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\targetver.h" />
     <ClInclude Include="Headers\Variadic.h" />
     <ClInclude Include="Headers\Win32Application.h" />

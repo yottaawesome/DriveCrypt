@@ -1,4 +1,4 @@
-#include "../Headers/Common.h"
+#include "../Headers/stdafx.h"
 #include "../../Shared/ExportedHeaders/IWin32Window.h"
 #include "../../Shared/ExportedHeaders/Button.h"
 #include "../../Static.Win32Application/Headers/StaticFunctions.h"

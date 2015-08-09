@@ -152,11 +152,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Console.h" />
+    <ClInclude Include="Headers\DynamicLibrary.h" />
+    <ClInclude Include="Headers\PointerWrapper.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\System.h" />
     <ClInclude Include="Headers\targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\DynamicLibrary.cpp" />
     <ClCompile Include="Source\AbstractBases.cpp" />
     <ClCompile Include="Source\Console.cpp" />
     <ClCompile Include="Source\dllmain.cpp">

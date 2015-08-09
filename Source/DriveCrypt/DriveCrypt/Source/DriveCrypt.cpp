@@ -1,8 +1,8 @@
 #include "../Headers/DriveCrypt.h"
 #include "../Headers/DriveCryptApplication.h"
-#include "../../Static.MemoryManagement/Headers/PointerWrapper.h"
+#include "../../System/Headers/PointerWrapper.h"
 #include "../../Static.Win32Application/Headers/ClientService.h"
-#include "../../Shared/ExportedHeaders/DynamicLibrary.h"
+#include "../../System/Headers/DynamicLibrary.h"
 #include "../../MemoryModel/Headers/Pointer.h"
 #include "../../Concurrency/Headers/Concurrency.h"
 

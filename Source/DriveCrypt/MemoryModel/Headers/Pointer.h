@@ -1,7 +1,6 @@
 #pragma once
 #include "../Headers/stdafx.h"
 #include "MemoryModel.h"
-
 #include <map>
 
 using namespace std;

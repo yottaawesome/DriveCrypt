@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Headers/ServiceFactories.h"
-#include "../../Static.MemoryManagement/Headers/PointerWrapper.h"
+#include "../../System/Headers/PointerWrapper.h"
 
 template<typename T>
 class ClientService

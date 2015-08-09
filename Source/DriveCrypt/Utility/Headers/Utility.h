@@ -39,21 +39,6 @@ public:
 	virtual ~ILogger() = 0;
 };
 
-class UTILITY_API Debug final
-{
-public:
-#ifdef UNICODE
-	static void PrintLine(wstring value);
-	static void PrintLine(wstring& value);
-#else
-	static void PrintLine(string value);
-	static void PrintLine(string& value);
-#endif
-
-private:
-	virtual void Abstract() = 0;
-};
-
 class UTILITY_API UtilityFactory final
 {
 public:

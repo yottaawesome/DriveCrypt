@@ -7,19 +7,20 @@
 #include "../../Concurrency/Headers/Concurrency.h"
 
 #include "../../Utility/Headers/Utility.h"
+#include "../../ComponentModel/Headers/ComponentModel.h"
 #include "../../System/Headers/System.h"
 
 //MEMORYMODEL_API int fnMemoryModel();
 
-class Test : public FactoryService
-{
-public:
-	Test()
-	{
-		prop = TypeFactory.Get<A>()();
-	}
-	PointerWrapper<A> prop;
-};
+//class Test : public FactoryService
+//{
+//public:
+//	Test()
+//	{
+//		prop = TypeFactory.Get<A>()();
+//	}
+//	PointerWrapper<A> prop;
+//};
 
 class IInterface
 {
@@ -51,7 +52,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 
 	//DynamicLibrary dll = DynamicLibrary(_T("MemoryModel.dll"));
 
-	//IFactory<AB> a;
+	//ITypeFactory<AB> a;
 	//a();
 	//PointerWrapper<AB> pw = new AB();
 
@@ -64,8 +65,13 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 
 	//Memo<ILogger> logger = UtilityFactory::ConstructLogger();
 	//logger->PrintLine("Hello world!");
-	Memo<IConsole> console = System::GetConsole();
-	console->PrintLine(L"Hello world!");
+	//Memo<IConsole> console = System::GetConsole();
+	//console->PrintLine(L"Hello world!");
+
+	System::Initialize();
+	IConsole* a = ComponentFactory::Instantiate<IConsole>();
+	Memo<IConsole> mem = a;
+	mem->PrintLine(L"Hello, world!");
 
 	IWin32Application& application = DriveCrypt();
 	application.Initialize();

@@ -1,5 +1,7 @@
 #pragma once
-#include "../../Shared/ExportedHeaders/IFactory.h"
+#include "stdafx.h"
+#include "../../ComponentModel/Headers/ComponentModel.h"
+//#include "../../ComponentModel/Headers/IFactory.h"
 #include "../Headers/Environment.h"
 
 class AB { };
@@ -11,50 +13,50 @@ public:
 
 	~A()
 	{
-		OutputDebugString(_T("Destroyed\n"));
+		OutputDebugString(L"Destroyed\n");
 	}
 
 	void Blah()
 	{
-		OutputDebugString(_T("Blah blah\n"));
+		OutputDebugString(L"Blah blah\n");
 	}
 };
 
-template<>
-class IFactory<A>
-{
-public:
-	IFactory()
-	{
-	}
+//template<>
+//class ITypeFactory<A>
+//{
+//public:
+//	ITypeFactory()
+//	{
+//	}
+//
+//	virtual A* operator()()
+//	{
+//		return new A();
+//	};
+//};
 
-	virtual A* operator()()
-	{
-		return new A();
-	};
-};
-
-template<>
-class IFactory<AB>
-{
-public:
-	IFactory()
-	{
-		MessageBox(nullptr, L"Blah", L"Blah", MB_OK);
-	};
-
-	virtual AB* operator()()
-	{
-		return new AB();
-	};
-};
-
-template<>
-class IFactory<ApplicationEnvironment>
-{
-public:
-	virtual ApplicationEnvironment* operator()()
-	{
-		return new ApplicationEnvironment();
-	};
-};
+//template<>
+//class ITypeFactory<AB>
+//{
+//public:
+//	ITypeFactory()
+//	{
+//		MessageBox(nullptr, L"Blah", L"Blah", MB_OK);
+//	};
+//
+//	virtual AB* operator()()
+//	{
+//		return new AB();
+//	};
+//};
+//
+//template<>
+//class ITypeFactory<ApplicationEnvironment>
+//{
+//public:
+//	virtual ApplicationEnvironment* operator()()
+//	{
+//		return new ApplicationEnvironment();
+//	};
+//};

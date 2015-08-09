@@ -3,26 +3,26 @@
 #include "../Headers/ServiceFactories.h"
 #include "../../System/Headers/PointerWrapper.h"
 
-template<typename T>
-class ClientService
-{
-public:
-	ClientService() : param(typeFactory()) { }
+//template<typename T>
+//class ClientService
+//{
+//public:
+//	ClientService() : param(typeFactory()) { }
+//
+//protected:
+//	static ITypeFactory<T> typeFactory;
+//	PointerWrapper<T> param;
+//};
+//
+//template<typename T>
+//ITypeFactory<T> ClientService<T>::typeFactory = ITypeFactory<T>();
 
-protected:
-	static IFactory<T> typeFactory;
-	PointerWrapper<T> param;
-};
-
-template<typename T>
-IFactory<T> ClientService<T>::typeFactory = IFactory<T>();
-
-class FactoryService
-{
-public:
-
-protected:
-	 static Factories TypeFactory;
-};
-
-Factories FactoryService::TypeFactory = Factories();
+//class FactoryService
+//{
+//public:
+//
+//protected:
+//	 static Factories TypeFactory;
+//};
+//
+//Factories FactoryService::TypeFactory = Factories();

@@ -1,5 +1,5 @@
 #include "../Headers/stdafx.h"
-#include "../Headers/Utility.h"
+#include "../Headers/Diagnostics.h"
 #include <iostream>
 
 #ifdef UNICODE

@@ -5,3 +5,8 @@ IConsole* System::GetConsole()
 {
 	return new Console();
 }
+
+void System::Initialize()
+{
+	ComponentFactory::RegisterIConsoleFactory(new ConsoleFactory());
+}

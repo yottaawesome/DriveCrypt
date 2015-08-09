@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include <string>
+#include "../../ComponentModel/Headers/ComponentModel.h"
 
 // Import/export
 #ifdef SYSTEM_EXPORTS
@@ -32,25 +33,18 @@ protected:
 	string* str;
 };
 
-class SYSTEM_API IConsole
+class SYSTEM_API ConsoleFactory : public IConsoleFactory
 {
 public:
-#ifdef UNICODE
-	virtual void Print(wstring value) = 0;
-	virtual void Print(wstring& value) = 0;
-	virtual void PrintLine(wstring value) = 0;
-	virtual void PrintLine(wstring& value) = 0;
-#else
-	virtual void PrintLine(string value) = 0;
-	virtual void PrintLine(string& value) = 0;
-	virtual void Print(string value) = 0;
-	virtual void Print(string& value) = 0;
-#endif
-	virtual ~IConsole() = 0;
+	virtual IConsole* operator() () override;
+	virtual void* Construct() override;
+	virtual ~ConsoleFactory(); 
 };
+
 
 class SYSTEM_API System final
 {
 public:
 	static IConsole* GetConsole();
+	static void Initialize();
 };

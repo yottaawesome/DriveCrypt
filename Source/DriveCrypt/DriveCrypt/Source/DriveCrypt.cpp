@@ -5,45 +5,11 @@
 #include "../../System/Headers/DynamicLibrary.h"
 #include "../../MemoryModel/Headers/Pointer.h"
 #include "../../Concurrency/Headers/Concurrency.h"
-
 #include "../../Utility/Headers/Utility.h"
 #include "../../ComponentModel/Headers/ComponentModel.h"
 #include "../../System/Headers/System.h"
 
 //MEMORYMODEL_API int fnMemoryModel();
-
-//class Test : public FactoryService
-//{
-//public:
-//	Test()
-//	{
-//		prop = TypeFactory.Get<A>()();
-//	}
-//	PointerWrapper<A> prop;
-//};
-
-class IInterface
-{
-public:
-	virtual void Do() = 0;
-};
-
-class Concrete1 : public IInterface
-{
-public:
-	virtual void Do() { OutputDebugString(L"1. Do\n"); };
-};
-
-class Concrete2: public Concrete1
-{
-public:
-	virtual void Do() override { OutputDebugString(L"2. Do\n"); };
-};
-
-PointerWrapper<Concrete1> Make()
-{
-	return new Concrete2();
-}
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPTSTR lpCmdLine, _In_ int nCmdShow)
 {
@@ -63,8 +29,6 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 	//fnMemoryModel();
 	//MEMORYMODEL_API Pointer<A> a = Pointer<A>();
 
-	//Memo<ILogger> logger = UtilityFactory::ConstructLogger();
-	//logger->PrintLine("Hello world!");
 	//Memo<IConsole> console = System::GetConsole();
 	//console->PrintLine(L"Hello world!");
 

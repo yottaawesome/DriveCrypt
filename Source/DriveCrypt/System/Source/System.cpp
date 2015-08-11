@@ -1,4 +1,3 @@
-#include "../Headers/System.h"
 #include "../Headers/Console.h"
 
 IConsole* System::GetConsole()
@@ -8,5 +7,6 @@ IConsole* System::GetConsole()
 
 void System::Initialize()
 {
-	ComponentFactory::RegisterIConsoleFactory(new ConsoleFactory());
+	ComponentFactory::RegisterFactory(new ConsoleFactory());
+	//ComponentFactory2::RegisterFactory(new ConsoleFactory2());
 }

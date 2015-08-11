@@ -11,52 +11,36 @@ class A
 public:
 	A() { }
 
-	~A()
+	virtual ~A()
 	{
 		OutputDebugString(L"Destroyed\n");
 	}
 
-	void Blah()
+	virtual void Blah()
 	{
 		OutputDebugString(L"Blah blah\n");
 	}
 };
 
-//template<>
-//class ITypeFactory<A>
-//{
-//public:
-//	ITypeFactory()
-//	{
-//	}
-//
-//	virtual A* operator()()
-//	{
-//		return new A();
-//	};
-//};
+template<typename T>
+class SpecializedFactory
+{
+public:
+	SpecializedFactory() { }
+	virtual T* operator()() { };
+};
 
-//template<>
-//class ITypeFactory<AB>
-//{
-//public:
-//	ITypeFactory()
-//	{
-//		MessageBox(nullptr, L"Blah", L"Blah", MB_OK);
-//	};
-//
-//	virtual AB* operator()()
-//	{
-//		return new AB();
-//	};
-//};
-//
-//template<>
-//class ITypeFactory<ApplicationEnvironment>
-//{
-//public:
-//	virtual ApplicationEnvironment* operator()()
-//	{
-//		return new ApplicationEnvironment();
-//	};
-//};
+template<>
+class SpecializedFactory<AB>
+{
+public:
+	SpecializedFactory()
+	{
+		MessageBox(nullptr, L"Blah", L"Blah", MB_OK);
+	};
+
+	virtual AB* operator()()
+	{
+		return new AB();
+	};
+};

@@ -33,14 +33,13 @@ protected:
 	string* str;
 };
 
-class SYSTEM_API ConsoleFactory : public IConsoleFactory
+class SYSTEM_API ConsoleFactory : public IComponentFactory<IConsole>
 {
 public:
 	virtual IConsole* operator() () override;
 	virtual void* Construct() override;
 	virtual ~ConsoleFactory(); 
 };
-
 
 class SYSTEM_API System final
 {

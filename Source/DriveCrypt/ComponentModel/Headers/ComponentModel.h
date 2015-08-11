@@ -36,37 +36,52 @@ public:
 };
 
 template<typename T>
-class COMPONENTMODEL_API IComponentFactory : public IBasicFactory
+class IComponentFactory : public IBasicFactory
 {
 public:
 	virtual T* operator() () = 0;
 	virtual ~IComponentFactory() = 0;
 };
 
-//template<>
-//class COMPONENTMODEL_API IComponentFactory<IConsole>
-//{
-//public:
-//	virtual IConsole* operator() () = 0;
-//	virtual ~IComponentFactory() = 0;
-//};
-
-// We need this due to the factories being defined in other DLLs
-class COMPONENTMODEL_API IConsoleFactory : public IComponentFactory<IConsole> 
-{
-public:
-	virtual ~IConsoleFactory() = 0;
-};
+template<typename T>
+IComponentFactory<T>::~IComponentFactory() { }
 
 class ComponentFactory
 {
 public:
-	static COMPONENTMODEL_API void RegisterIConsoleFactory(IConsoleFactory* factory);
-
 	template<typename T>
-	static COMPONENTMODEL_API T* Instantiate();
-	template<>
-	static COMPONENTMODEL_API IConsole* Instantiate<IConsole>();
+	static void RegisterFactory(IComponentFactory<T>* factory);
+	
+	template<typename T>
+	static T* Instantiate();
+
 protected:
-	static map<size_t, IBasicFactory*>* Mapper;
+	COMPONENTMODEL_API static map<size_t, IBasicFactory*>* Mapper;
 };
+
+template<typename T>
+T* ComponentFactory::Instantiate()
+{
+	IComponentFactory<T>* factory = (IComponentFactory<T>*)Mapper->at(typeid(T).hash_code());
+	if (factory == nullptr)
+	{
+		string s1 = "Service resolution exception for type ";
+		string s2 = typeid(T).name();
+		throw new runtime_error(s1 + s2);
+	}
+
+	return (*factory)();
+}
+
+template<typename T>
+void ComponentFactory::RegisterFactory(IComponentFactory<T>* factory)
+{
+	if (factory == nullptr)
+	{
+		string s = "Null service registration for type ";
+		s += typeid(IConsole).name();
+		throw new runtime_error(s);
+	}
+
+	Mapper->insert(std::make_pair(typeid(IConsole).hash_code(), (IBasicFactory*)factory));
+}

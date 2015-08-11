@@ -1,7 +1,5 @@
 #include "../Headers/System.h"
-
 #include "../Headers/stdafx.h"
-#include "../Headers/System.h"
 #include <locale>
 #include <codecvt>
 

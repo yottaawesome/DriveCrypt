@@ -22,7 +22,7 @@
     <ProjectGuid>{B72AC6D5-AFBE-41EF-AC15-16619E537738}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MemoryModel</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

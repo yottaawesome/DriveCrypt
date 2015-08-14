@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include <functional>
+#include <vector>
 
 // The following ifdef block is the standard way of creating macros which make exporting 
 // from a DLL simpler. All files within this DLL are compiled with the CONCURRENCY_EXPORTS
@@ -15,6 +16,26 @@
 #endif
 
 using namespace std;
+
+class CONCURRENCY_API Message
+{
+public:
+	enum MessageType
+	{
+		NORMAL_PROCESSING,
+		CEDE_RESOURCE,
+		COMMIT_TASK,
+		THREAD_FINISH,
+	};
+	Message(MessageType messageType, void* parameter);
+	virtual ~Message();
+	virtual void zero();
+	MessageType messageType;
+	void* parameter;
+	bool deferred;
+	int deferCount;
+protected:
+};
 
 class CONCURRENCY_API CriticalSection
 {
@@ -84,6 +105,20 @@ public:
 	CONCURRENCY_API static void RunThread(int(*simpleFunc)());
 	CONCURRENCY_API static void RunThread(function<int()> func);
 protected:
-	virtual int run() override;
+	CONCURRENCY_API virtual int run() override;
 	function<int()> func;
+};
+
+class SemaphoreEventThread : public Thread
+{
+public:
+	CONCURRENCY_API SemaphoreEventThread(void* param, bool destroyOnCompletion);
+	CONCURRENCY_API virtual ~SemaphoreEventThread();
+	CONCURRENCY_API virtual void addMessage(Message msg);
+protected:
+	vector<Message> messageQueue;
+	CRITICAL_SECTION queueGuard;
+	HANDLE hSemaphore;
+	CONCURRENCY_API virtual int run();
+	CONCURRENCY_API virtual void getMessage(Message* msg);
 };

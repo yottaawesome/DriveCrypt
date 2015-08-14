@@ -14,7 +14,7 @@
     <ProjectGuid>{A01E88B5-D25F-40FA-AF22-69D320294D67}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DriveCrypt</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

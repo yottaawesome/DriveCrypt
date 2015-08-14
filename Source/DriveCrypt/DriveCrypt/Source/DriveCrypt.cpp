@@ -33,9 +33,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 	//console->PrintLine(L"Hello world!");
 
 	System::Initialize();
-	IConsole* a = ComponentFactory::Instantiate<IConsole>();
-	Memo<IConsole> mem = a;
-	mem->PrintLine(L"Hello, world!");
+	Memo<IConsole> console = ComponentFactory::Instantiate<IConsole>();;
+	console->PrintLine(L"Hello, world!");
 
 	IWin32Application& application = DriveCrypt();
 	application.Initialize();

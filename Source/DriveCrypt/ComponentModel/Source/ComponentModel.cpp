@@ -4,8 +4,9 @@
 #include "../Headers/ComponentModel.h"
 #include <typeinfo>
 
-IConsole::~IConsole() { }
-
-IBasicFactory::~IBasicFactory() { };
-
 map<size_t, IBasicFactory*>* ComponentFactory::Mapper = new map<size_t, IBasicFactory*>();
+
+inline IConsole::~IConsole() { }
+inline IBasicFactory::~IBasicFactory() { };
+inline IThread::~IThread() { };
+inline IExecutionPackage::~IExecutionPackage() { }

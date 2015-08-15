@@ -2,7 +2,7 @@
 #include "../Headers/Concurrency.h"
 
 SemaphoreEventThread::SemaphoreEventThread(void* param, bool destroyOnCompletion) 
-: Thread(param, false, destroyOnCompletion)
+: Thread(param, destroyOnCompletion)
 {
     if(!(hSemaphore = CreateSemaphore(0, 0, 100, 0)))
         throw std::runtime_error("Failed to initialize semaphore");
@@ -43,7 +43,7 @@ int SemaphoreEventThread::run()
     }
 
     OutputDebugString(L"\nEventSemaphoreThread exiting\n");
-    return Thread::SUCCESS;
+    return ThreadStatus::SUCCESS;
 }
 
 void SemaphoreEventThread::getMessage(Message* msg)

@@ -1,5 +1,7 @@
 #pragma once
 #include "stdafx.h"
+#include "../../ComponentModel/Headers/ComponentModel.h"
+#include "../../ComponentModel/Headers/MemoFree.h"
 #include <functional>
 #include <vector>
 
@@ -63,35 +65,31 @@ protected:
 	CriticalSection ics;
 };
 
-class CONCURRENCY_API Thread
+class Thread : public IThread
 {
 public:
-	enum status
-	{
-		SUCCESS = 0,
-		FAILURE = 1,
-		READY = 2,
-		RUNNING = 3,
-		SUSPENDED = 4,
-		ABNORMAL_TERMINATION = 5
-	};
-	Thread(void* param, bool runImmediately, bool destroyOnCompletion);
-	virtual ~Thread();
-	virtual void start();
-	virtual int getStatus();
-	virtual void terminate();
-	virtual void suspend();
-	virtual void resume();
-	int priority;
+	CONCURRENCY_API Thread(void* param, bool destroyOnCompletion);
+	CONCURRENCY_API virtual ~Thread() override;
+	CONCURRENCY_API virtual void start(int(*simpleFunc)());
+	CONCURRENCY_API virtual void start(function<int()>* func) override;
+	CONCURRENCY_API virtual void start(IExecutionPackage* executionPackage);
+	CONCURRENCY_API virtual int getStatus() override;
+	CONCURRENCY_API virtual void terminate() override;
+	CONCURRENCY_API virtual void suspend() override;
+	CONCURRENCY_API virtual void resume() override;
+
 protected:
-	bool runImmediately;
 	int status;
 	unsigned int threadId;
 	HANDLE hThread;
 	bool destroyOnCompletion;
 	void* threadParam;
-	virtual int run() = 0;
-	static unsigned int WINAPI ThreadProc(void* param);
+	SystemFree<function<int()>> func;
+	//function<int()>* func;
+	IExecutionPackage* executionPackage;
+
+	CONCURRENCY_API virtual int run();
+	CONCURRENCY_API static unsigned int WINAPI ThreadProc(void* param);
 };
 
 typedef void (Thread::*toRun)(void*);
@@ -99,14 +97,16 @@ typedef void (Thread::*toRun)(void*);
 class Runnable : public Thread
 {
 public:
-	CONCURRENCY_API Runnable(int(*simpleFunc)(), bool runImmediately = false);
-	CONCURRENCY_API Runnable(function<int()> func, bool runImmediately = false);
+	CONCURRENCY_API Runnable(IExecutionPackage* executionPackage);
+	CONCURRENCY_API Runnable(int(*simpleFunc)());
+	CONCURRENCY_API Runnable(function<int()> func);
 
 	CONCURRENCY_API static void RunThread(int(*simpleFunc)());
 	CONCURRENCY_API static void RunThread(function<int()> func);
 protected:
 	CONCURRENCY_API virtual int run() override;
 	function<int()> func;
+	IExecutionPackage* executionPackage;
 };
 
 class SemaphoreEventThread : public Thread
@@ -121,4 +121,18 @@ protected:
 	HANDLE hSemaphore;
 	CONCURRENCY_API virtual int run();
 	CONCURRENCY_API virtual void getMessage(Message* msg);
+};
+
+class CONCURRENCY_API ThreadFactory : public IComponentFactory<IThread>
+{
+public:
+	virtual IThread* operator() () override;
+	virtual void* Construct() override;
+	virtual ~ThreadFactory();
+};
+
+class CONCURRENCY_API Concurrency final
+{
+public:
+	static void Initialize();
 };

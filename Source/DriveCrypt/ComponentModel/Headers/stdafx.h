@@ -11,6 +11,9 @@
 // Windows Header Files:
 #include <windows.h>
 
-
-
 // TODO: reference additional headers your program requires here
+#ifdef COMPONENTMODEL_EXPORTS
+#define COMPONENTMODEL_API __declspec(dllexport)
+#else
+#define COMPONENTMODEL_API __declspec(dllimport)
+#endif

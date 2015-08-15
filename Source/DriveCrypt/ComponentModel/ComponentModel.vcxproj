@@ -151,7 +151,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\ComponentFactory.h" />
     <ClInclude Include="Headers\ComponentModel.h" />
+    <ClInclude Include="Headers\Concurrency.h" />
+    <ClInclude Include="Headers\Console.h" />
+    <ClInclude Include="Headers\MemoFree.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\targetver.h" />
   </ItemGroup>

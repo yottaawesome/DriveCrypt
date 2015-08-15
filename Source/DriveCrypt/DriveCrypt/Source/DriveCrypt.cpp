@@ -33,8 +33,18 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 	//console->PrintLine(L"Hello world!");
 
 	System::Initialize();
-	Memo<IConsole> console = ComponentFactory::Instantiate<IConsole>();;
+	Concurrency::Initialize();
+
+	Memo<IConsole> console = ComponentFactory::Instantiate<IConsole>();
 	console->PrintLine(L"Hello, world!");
+	IThread* t = ComponentFactory::Instantiate<IThread>();
+	t->start(new function<int()>(
+		[&console]() -> int
+		{ 
+			console->PrintLine(L"Thread says, \"Hello, world!\""); 
+			return 1; 
+		}
+	));
 
 	IWin32Application& application = DriveCrypt();
 	application.Initialize();

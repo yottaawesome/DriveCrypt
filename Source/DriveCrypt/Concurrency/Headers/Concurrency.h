@@ -70,9 +70,10 @@ class Thread : public IThread
 public:
 	CONCURRENCY_API Thread(void* param, bool destroyOnCompletion);
 	CONCURRENCY_API virtual ~Thread() override;
-	CONCURRENCY_API virtual void start(int(*simpleFunc)());
+	CONCURRENCY_API virtual void start(int(*simpleFunc)()) override;
 	CONCURRENCY_API virtual void start(function<int()>* func) override;
-	CONCURRENCY_API virtual void start(IExecutionPackage* executionPackage);
+	CONCURRENCY_API virtual void start(function<int()> func) override;
+	CONCURRENCY_API virtual void start(IExecutionPackage* executionPackage) override;
 	CONCURRENCY_API virtual int getStatus() override;
 	CONCURRENCY_API virtual void terminate() override;
 	CONCURRENCY_API virtual void suspend() override;
@@ -85,7 +86,7 @@ protected:
 	bool destroyOnCompletion;
 	void* threadParam;
 	SystemFree<function<int()>> func;
-	//function<int()>* func;
+	function<int()> func2;
 	IExecutionPackage* executionPackage;
 
 	CONCURRENCY_API virtual int run();

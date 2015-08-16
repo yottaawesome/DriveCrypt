@@ -16,16 +16,23 @@ Thread::~Thread()
 void Thread::start(int(*simpleFunc)())
 {
 	this->executionPackage = nullptr;
-	this->func = new function<int()>(*simpleFunc);
+	//this->func = new function<int()>(*simpleFunc);
 	hThread = (HANDLE)_beginthreadex(0, 0, Thread::ThreadProc, this, 0, &threadId);
 }
 
 void Thread::start(function<int()>* func)
 {
 	this->executionPackage = nullptr;
-	this->func = func;
+	//this->func = func;
+	func2 = *func;
     //hThread = CreateThread(NULL, 0, Thread::ThreadProc, this, 0, &threadId);
     hThread = (HANDLE) _beginthreadex(0, 0, Thread::ThreadProc, this, 0, &threadId);
+}
+
+void Thread::start(function<int()> func)
+{
+	func2 = func;
+	hThread = (HANDLE)_beginthreadex(0, 0, Thread::ThreadProc, this, 0, &threadId);
 }
 
 void Thread::start(IExecutionPackage* executionPackage)
@@ -39,7 +46,8 @@ int Thread::run()
 {
 	if (executionPackage != nullptr)
 		return executionPackage->Run();
-	return func->operator()();
+	//return func->operator()();
+	return func2();
 }
 
 int Thread::getStatus()

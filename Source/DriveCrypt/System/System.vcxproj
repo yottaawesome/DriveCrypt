@@ -156,6 +156,7 @@
     <ClInclude Include="Headers\Console.h" />
     <ClInclude Include="Headers\DynamicLibrary.h" />
     <ClInclude Include="Headers\PointerWrapper.h" />
+    <ClInclude Include="Headers\ReflectableFunction.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\System.h" />
     <ClInclude Include="Headers\targetver.h" />

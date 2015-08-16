@@ -26,6 +26,7 @@ class COMPONENTMODEL_API IThread
 public:
 	virtual ~IThread() = 0;
 	virtual void start(function<int()>* func) = 0;
+	virtual void start(function<int()> func) = 0;
 	virtual void start(int(*simpleFunc)()) = 0;
 	virtual void start(IExecutionPackage* executionPackage) = 0;
 	virtual int getStatus() = 0;

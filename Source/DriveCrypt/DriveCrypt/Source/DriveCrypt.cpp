@@ -11,6 +11,65 @@
 
 //MEMORYMODEL_API int fnMemoryModel();
 
+class Z
+{
+public:
+	Z() 
+	{
+		OutputDebugString(L"\nZ created");
+	}
+	~Z()
+	{
+		OutputDebugString(L"\nZ destroyed");
+	}
+};
+
+class Y
+{
+public:
+	Y() : z(Z())
+	{
+		OutputDebugString(L"\nY created\n");
+	}
+
+	Y(Z& z) : z(z) 
+	{
+		OutputDebugString(L"\nY created\n");
+	}
+
+	void Add(Z& z)
+	{
+		//OutputDebugString(L"\nZ assigned");
+		this->z = z;
+		//OutputDebugString(L"\nZ postassigned");
+	}
+	void Add(Z* z)
+	{
+		//OutputDebugString(L"\nZ assigned");
+		this->z = *z;
+		//OutputDebugString(L"\nZ postassigned");
+	}
+
+	~Y()
+	{
+		//z.~Z();
+		OutputDebugString(L"\nY destroyed");
+	}
+protected:
+	Z& z;
+};
+
+void Blah()
+{
+	Z z;
+	Y y = z;
+	OutputDebugString(L"\nBlah destroyed");
+	//Y y;// = (Z());
+	//Y y2;
+	//y.Add(Z());
+	//y.Add(Z());
+}
+
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPTSTR lpCmdLine, _In_ int nCmdShow)
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
@@ -38,13 +97,22 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 	Memo<IConsole> console = ComponentFactory::Instantiate<IConsole>();
 	console->PrintLine(L"Hello, world!");
 	IThread* t = ComponentFactory::Instantiate<IThread>();
-	t->start(new function<int()>(
+	t->start(//new function<int()>(
 		[&console]() -> int
 		{ 
 			console->PrintLine(L"Thread says, \"Hello, world!\""); 
 			return 1; 
 		}
-	));
+	//)
+		);
+
+	Runnable* r = new Runnable([&console]() -> int
+	{
+		console->PrintLine(L"Thread says, \"Hello, world!\"");
+		return 1;
+	});
+
+	Blah();
 
 	IWin32Application& application = DriveCrypt();
 	application.Initialize();

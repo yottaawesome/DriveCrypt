@@ -31,82 +31,21 @@ inline typename std::enable_if<I<sizeof...(Tp), void>::type print(std::tuple<Tp.
 	print<I + 1, Tp...>(t, arr);
 }
 
-template<typename R, typename... Args>
-class Invocable
-{
-public:
-	Invocable(const function<R(Args...)> f);
-	~Invocable();
-	R operator()(Args... arg);
-	R Invoke(Args... arg);
-	const vector<string>& Typenames();
-
-protected:
-	// Extracting the definitions causes compiler errors, specifically "no matching definition"
-	//string* typeNames = new string[sizeof...(Args)];
-	vector<string> v;
-	bool typesResolved = false;
-
-	function<R(Args...)> f;
-
-	template<std::size_t I = 0, typename... Tp>
-	typename std::enable_if<(I == sizeof...(Tp)), void>::type EnumIf(std::tuple<Tp...>& typeTuple) { }
-
-	template<std::size_t I = 0, typename... Tp>
-	typename std::enable_if<(I<sizeof...(Tp)), void>::type EnumIf(std::tuple<Tp...>& typeTuple)
-	{
-		v.push_back(typeid(std::get<I>(typeTuple)).name());
-		EnumIf<I + 1, Tp...>(typeTuple);
-	}
-
-private:
-	// Completely disable assignments
-	void operator=(Invocable a) = delete;
-};
-
-template<typename R, typename... Args>
-Invocable<R, Args...>::~Invocable()
-{
-}
-template<typename R, typename... Args>
-Invocable<R, Args...>::Invocable(const function<R(Args...)> f) : f(f)
-{
-}
-
-template<typename R, typename... Args>
-R Invocable<R, Args...>::operator()(Args... arg)
-{
-	return f(arg...);
-}
-
-template<typename R, typename... Args>
-R Invocable<R, Args...>::Invoke(Args... arg)
-{
-	return f(arg...);
-}
-
-template<typename R, typename... Args>
-const vector<string>& Invocable<R, Args...>::Typenames()
-{
-	if (!typesResolved)
-	{
-		std::tuple<Args...> t;
-		//print(t, s);
-		EnumIf(t);
-		typesResolved = true;
-	}
-	return v;
-}
+#include "Invocable.h"
+#include "TemplatePoly.h"
+#include "PublicInvocable.h"
 
 class RT
 {
 public:
 	RT();
 	RT(int g);
-	Invocable<int, int> f;// = [this](int i) -> int { return x; };
-	Invocable<int, int> t;// = [this](int i) -> int { return x; };
+	PublicInvocable<int, int> f;// = [this](int i) -> int { return x; };
+	PublicInvocable<int, int> t;// = [this](int i) -> int { return x; };
 
 protected:
+	Invocable<int, int> inner_f;// = [this](int i) -> int { return x; };
+	Invocable<int, int> inner_t;// = [this](int i) -> int { return x; };
 	// This allows multiple constructors to initialize the Invocables and minimize duplication of lambdas
 	RT(function<int(int)> f, function<int(int)> t);
 	int z = 5;
@@ -121,7 +60,7 @@ int RT::Test(int i)
 	return 1;
 }
 
-RT::RT(function<int(int)> f, function<int(int)> t) : f(f), t(t) { }
+RT::RT(function<int(int)> param_f, function<int(int)> param_t) : inner_f(param_f), inner_t(param_t), f(inner_f), t(inner_t) { }
 
 RT::RT() : RT(
 	[this](int i) -> int
@@ -138,6 +77,11 @@ RT::RT() : RT(
 
 RT::RT(int g) : RT()
 {
+	inner_f = [this](int i) -> int
+	{
+		jabber();
+		return z;
+	};
 }
 
 void RT::jabber() 

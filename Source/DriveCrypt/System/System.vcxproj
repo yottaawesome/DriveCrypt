@@ -155,11 +155,14 @@
   <ItemGroup>
     <ClInclude Include="Headers\Console.h" />
     <ClInclude Include="Headers\DynamicLibrary.h" />
+    <ClInclude Include="Headers\Invocable.h" />
     <ClInclude Include="Headers\PointerWrapper.h" />
+    <ClInclude Include="Headers\PublicInvocable.h" />
     <ClInclude Include="Headers\ReflectableFunction.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\System.h" />
     <ClInclude Include="Headers\targetver.h" />
+    <ClInclude Include="Headers\TemplatePoly.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\DynamicLibrary.cpp" />

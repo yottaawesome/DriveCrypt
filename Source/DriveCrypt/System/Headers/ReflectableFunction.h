@@ -42,10 +42,11 @@ public:
 	RT(int g);
 	PublicInvocable<int, int> f;// = [this](int i) -> int { return x; };
 	PublicInvocable<int, int> t;// = [this](int i) -> int { return x; };
-
-protected:
 	Invocable<int, int> inner_f;// = [this](int i) -> int { return x; };
 	Invocable<int, int> inner_t;// = [this](int i) -> int { return x; };
+
+protected:
+	
 	// This allows multiple constructors to initialize the Invocables and minimize duplication of lambdas
 	RT(function<int(int)> f, function<int(int)> t);
 	int z = 5;
@@ -71,7 +72,7 @@ RT::RT() : RT(
 	[this](int i) -> int
 	{
 		this->z = 5;
-		return this->f(z);
+		return 5;// this->f(z);
 	})
 { }
 

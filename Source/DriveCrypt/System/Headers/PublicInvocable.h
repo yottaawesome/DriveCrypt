@@ -7,14 +7,14 @@ template<typename R, typename... Args>
 class PublicInvocable
 {
 public:
-	PublicInvocable(Invocable<R, Args...> f);
+	PublicInvocable(Invocable<R, Args...>& f);
 	~PublicInvocable();
 	R operator()(Args... arg);
 	R Invoke(Args... arg);
 	const vector<string>& Typenames();
 
 protected:
-	Invocable<R, Args...> f;
+	Invocable<R, Args...>& f;
 
 private:
 	// Completely disable assignments
@@ -22,7 +22,7 @@ private:
 };
 
 template<typename R, typename... Args>
-PublicInvocable<R, Args...>::PublicInvocable(Invocable<R, Args...> f) : f(f) { l.g(); }
+PublicInvocable<R, Args...>::PublicInvocable(Invocable<R, Args...>& f) : f(f) { }
 
 template<typename R, typename... Args>
 PublicInvocable<R, Args...>::~PublicInvocable() { }

@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include <string>
 #include "../../ComponentModel/Headers/ComponentModel.h"
+#include "PolyFactory.h"
 
 // Import/export
 #ifdef SYSTEM_EXPORTS
@@ -11,6 +12,11 @@
 #endif
 
 using namespace std;
+
+template<>
+class PolyFactory<ConsolePolyFactory, IConsole>
+{
+};
 
 class SYSTEM_API SystemString
 {
@@ -33,7 +39,7 @@ protected:
 	string* str;
 };
 
-class SYSTEM_API ConsoleFactory : public IComponentFactory<IConsole>
+class SYSTEM_API ConsoleFactory : public IVirtualComponentFactory<IConsole>
 {
 public:
 	virtual IConsole* operator() () override;

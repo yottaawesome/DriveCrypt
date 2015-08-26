@@ -12,21 +12,49 @@ public:
 };
 
 template<typename T>
-class IComponentFactory : public IBasicFactory
+class IVirtualComponentFactory : public IBasicFactory
 {
 public:
 	virtual T* operator() () = 0;
-	virtual ~IComponentFactory() = 0;
+	virtual ~IVirtualComponentFactory() = 0;
 };
 
 template<typename T>
-IComponentFactory<T>::~IComponentFactory() { }
+IVirtualComponentFactory<T>::~IVirtualComponentFactory() { }
+
+class AB { };
+
+template<typename T>
+class SpecializedFactory
+{
+public:
+	SpecializedFactory() { }
+	virtual T* operator()() { return nullptr; };
+};
+
+template<typename T, typename R>
+class PolyFactory
+{
+public:
+	PolyFactory() { }
+	virtual T* operator()() { return t(); };
+protected:
+	T t;
+};
+
+template<typename T>
+class BasicComponentFactory : public IVirtualComponentFactory<T>
+{
+public:
+	virtual T* operator() () { return nullptr; };
+	virtual ~BasicComponentFactory() { };
+};
 
 class ComponentFactory
 {
 public:
 	template<typename T>
-	static void RegisterFactory(IComponentFactory<T>* factory);
+	static void RegisterFactory(IVirtualComponentFactory<T>* factory);
 
 	template<typename T>
 	static T* Instantiate();
@@ -38,7 +66,7 @@ protected:
 template<typename T>
 T* ComponentFactory::Instantiate()
 {
-	IComponentFactory<T>* factory = (IComponentFactory<T>*)Mapper->at(typeid(T).hash_code());
+	IVirtualComponentFactory<T>* factory = (IVirtualComponentFactory<T>*)Mapper->at(typeid(T).hash_code());
 	if (factory == nullptr)
 	{
 		string s1 = "Service resolution exception for type ";
@@ -50,7 +78,7 @@ T* ComponentFactory::Instantiate()
 }
 
 template<typename T>
-void ComponentFactory::RegisterFactory(IComponentFactory<T>* factory)
+void ComponentFactory::RegisterFactory(IVirtualComponentFactory<T>* factory)
 {
 	if (factory == nullptr)
 	{

@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{AB4745DA-A0F3-47DC-B8BF-D177CA2BBCE3}</ProjectGuid>
+    <ProjectGuid>{0FBA4550-7A52-423E-B0A0-F6E59A57B1EF}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>System</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <RootNamespace>Init</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,7 +77,7 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -89,13 +89,13 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;INIT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)$(Configuration)\Utility.lib;$(SolutionDir)$(Configuration)\Concurrency.lib;$(SolutionDir)$(Configuration)\ComponentModel.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)$(Configuration)\Utility.lib;$(SolutionDir)$(Configuration)\Concurrency.lib;$(SolutionDir)$(Configuration)\ComponentModel.lib;$(SolutionDir)$(Configuration)\Cryptography.lib;$(SolutionDir)$(Configuration)\Diagnostics.lib;$(SolutionDir)$(Configuration)\MemoryModel.lib;$(SolutionDir)$(Configuration)\System.lib;$(SolutionDir)$(Configuration)\Win32GUI.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -104,7 +104,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;INIT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;INIT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -128,7 +128,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>$(SolutionDir)$(Configuration)\Utility.lib;$(SolutionDir)$(Configuration)\Concurrency.lib;$(SolutionDir)$(Configuration)\ComponentModel.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)$(Configuration)\Utility.lib;$(SolutionDir)$(Configuration)\Concurrency.lib;$(SolutionDir)$(Configuration)\ComponentModel.lib;$(SolutionDir)$(Configuration)\Cryptography.lib;$(SolutionDir)$(Configuration)\Diagnostics.lib;$(SolutionDir)$(Configuration)\MemoryModel.lib;$(SolutionDir)$(Configuration)\System.lib;$(SolutionDir)$(Configuration)\Win32GUI.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,7 +139,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;INIT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -153,22 +153,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Console.h" />
-    <ClInclude Include="Headers\DynamicLibrary.h" />
-    <ClInclude Include="Headers\Invocable.h" />
-    <ClInclude Include="Headers\PointerWrapper.h" />
-    <ClInclude Include="Headers\PolyFactory.h" />
-    <ClInclude Include="Headers\PublicInvocable.h" />
-    <ClInclude Include="Headers\ReflectableFunction.h" />
+    <ClInclude Include="Headers\Init.h" />
     <ClInclude Include="Headers\stdafx.h" />
-    <ClInclude Include="Headers\System.h" />
     <ClInclude Include="Headers\targetver.h" />
-    <ClInclude Include="Headers\TemplatePoly.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\DynamicLibrary.cpp" />
-    <ClCompile Include="Source\AbstractBases.cpp" />
-    <ClCompile Include="Source\Console.cpp" />
     <ClCompile Include="Source\dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -183,11 +172,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Source\PolyFactory.cpp" />
-    <ClCompile Include="Source\ServiceFactories.cpp" />
+    <ClCompile Include="Source\Init.cpp" />
     <ClCompile Include="Source\stdafx.cpp" />
-    <ClCompile Include="Source\System.cpp" />
-    <ClCompile Include="Source\SystemString.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

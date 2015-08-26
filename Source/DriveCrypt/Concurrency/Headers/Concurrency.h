@@ -124,7 +124,7 @@ protected:
 	CONCURRENCY_API virtual void getMessage(Message* msg);
 };
 
-class CONCURRENCY_API ThreadFactory : public IComponentFactory<IThread>
+class CONCURRENCY_API ThreadFactory : public IVirtualComponentFactory<IThread>
 {
 public:
 	virtual IThread* operator() () override;

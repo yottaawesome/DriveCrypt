@@ -46,6 +46,6 @@ auto j = I<O<int, int>, int, int>(O<int, int>());
 
 M<int, int> l = (Invocable<int, int>(
 	[](int i) -> int
-{
-	return i;
-}));
+	{
+		return i;
+	}));

@@ -11,7 +11,7 @@ template<typename R, typename... Args>
 class Invocable
 {
 public:
-	Invocable(const function<R(Args...)> f);
+	Invocable(function<R(Args...)> f);
 	virtual ~Invocable();
 	virtual R operator()(Args... arg) const;
 	virtual R Invoke(Args... arg) const;

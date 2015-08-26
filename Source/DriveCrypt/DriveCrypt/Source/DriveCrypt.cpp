@@ -1,7 +1,7 @@
 #include "../Headers/DriveCrypt.h"
 #include "../Headers/DriveCryptApplication.h"
 #include "../../System/Headers/PointerWrapper.h"
-#include "../../Static.Win32Application/Headers/ClientService.h"
+//#include "../../Static.Win32Application/Headers/ClientService.h"
 #include "../../System/Headers/DynamicLibrary.h"
 #include "../../MemoryModel/Headers/Pointer.h"
 #include "../../Concurrency/Headers/Concurrency.h"
@@ -97,20 +97,12 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 	Memo<IConsole> console = ComponentFactory::Instantiate<IConsole>();
 	console->PrintLine(L"Hello, world!");
 	IThread* t = ComponentFactory::Instantiate<IThread>();
-	t->start(//new function<int()>(
+	t->start(
 		[&console]() -> int
 		{ 
 			console->PrintLine(L"Thread says, \"Hello, world!\""); 
-			return 1; 
-		}
-	//)
-		);
-
-	Runnable* r = new Runnable([&console]() -> int
-	{
-		console->PrintLine(L"Thread says, \"Hello, world!\"");
-		return 1;
-	});
+			return 0; 
+		});
 
 	Blah();
 

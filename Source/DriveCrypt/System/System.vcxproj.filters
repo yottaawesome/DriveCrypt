@@ -48,6 +48,9 @@
     <ClInclude Include="Headers\PublicInvocable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\PolyFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\dllmain.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\ServiceFactories.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PolyFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,6 +2,7 @@
 #include <Wincon.h>
 #include <iostream>
 #include "../Headers/Console.h"
+#include "../Headers/PolyFactory.h"
 #include "../../Utility/Headers/Utility.h"
 
 bool Console::ConsoleCreated = false;

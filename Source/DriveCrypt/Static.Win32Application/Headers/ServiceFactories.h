@@ -4,8 +4,6 @@
 //#include "../../ComponentModel/Headers/IFactory.h"
 #include "../Headers/Environment.h"
 
-class AB { };
-
 class A
 {
 public:
@@ -20,14 +18,6 @@ public:
 	{
 		OutputDebugString(L"Blah blah\n");
 	}
-};
-
-template<typename T>
-class SpecializedFactory
-{
-public:
-	SpecializedFactory() { }
-	virtual T* operator()() { };
 };
 
 template<>

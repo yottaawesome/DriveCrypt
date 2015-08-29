@@ -1,7 +1,7 @@
 #include "../Headers/stdafx.h"
 #include "../../Shared/ExportedHeaders/IWin32Window.h"
 #include "../../Shared/ExportedHeaders/Button.h"
-#include "../../Static.Win32Application/Headers/StaticFunctions.h"
+#include "../../Win32GUI/Headers/StaticFunctions.h"
 #include  <Commctrl.h>
 #include "../Headers/Variadic.h"
 

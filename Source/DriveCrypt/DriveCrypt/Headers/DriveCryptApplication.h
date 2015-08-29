@@ -3,7 +3,7 @@
 #include "Common.h"
 #include "../../Shared/ExportedHeaders/IWin32Application.h"
 #include "DriveCryptMainWindow.h"
-#include "../../Static.Win32Application/Headers/Win32Application.h"
+#include "../../Win32GUI/Headers/Win32Application.h"
 
 class DriveCrypt : public Win32Application
 {

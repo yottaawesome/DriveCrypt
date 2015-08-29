@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="Common problems.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\DriveCrypt.h">

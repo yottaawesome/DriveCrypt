@@ -2,46 +2,24 @@
 #include "../Headers/stdafx.h"
 #include "../Headers/Win32GUI.h"
 
-class X
-{
-public:
-	int i = 1;
-	void operator=(X x)
-	{
-		OutputDebugString(L"\nYep\n");
-		x.i++;
-	}
-};
-
-class Y
-{
-public:
-	Y() : public_x(protected_x) { }
-
-	const X& public_x;
-
-	void G()
-	{
-		protected_x = X();
-	}
-protected:
-	X protected_x;
-};
-
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
-	Y y = Y();
-	y.G();
-	OutputDebugString(L"\nYeeeeeeeeeeeeeeeeeeeeeeeeeeep\n");
-
 	switch (ul_reason_for_call)
 	{
 		case DLL_PROCESS_ATTACH:
-			OutputDebugString(L"\nYeah!.dll -> PROCESS_ATTACH");
+			OutputDebugString(L"\nWin32GUI.dll -> PROCESS_ATTACH\n");
 			break;
+
 		case DLL_THREAD_ATTACH:
+			OutputDebugString(L"\nWin32GUI.dll -> THREAD_ATTACH\n");
+			break;
+
 		case DLL_THREAD_DETACH:
+			OutputDebugString(L"\nWin32GUI.dll -> THREAD_DETACH\n");
+			break;
+
 		case DLL_PROCESS_DETACH:
+			OutputDebugString(L"\nWin32GUI.dll -> PROCESS_DETACH\n");
 			break;
 	}
 	return TRUE;

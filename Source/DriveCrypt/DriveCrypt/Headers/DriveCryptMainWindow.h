@@ -1,6 +1,6 @@
 #pragma once
 #include "Common.h"
-#include "../../ComponentModel/Headers/IWin32Window.h"
+#include "../../ComponentModel/Headers/ComponentModel.h"
 
 #define MAX_LOADSTRING 100
 

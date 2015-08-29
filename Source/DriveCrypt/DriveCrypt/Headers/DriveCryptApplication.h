@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Common.h"
-#include "../../ComponentModel/Headers/IWin32Application.h"
 #include "DriveCryptMainWindow.h"
 #include "../../Win32GUI/Headers/Win32Application.h"
 

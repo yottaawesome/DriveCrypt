@@ -39,9 +39,6 @@
     <ClInclude Include="Headers\MemoFree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>

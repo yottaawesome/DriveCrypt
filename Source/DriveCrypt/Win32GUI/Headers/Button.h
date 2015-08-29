@@ -1,7 +1,8 @@
 #pragma once
-#include "IWin32Control.h"
+#include "../../ComponentModel/Headers/ComponentModel.h"
+#include "../Headers/Win32GUI.h"
 
-class Button : public IButton
+class WIN32GUI_API Button : public IButton
 {
 public:
 	Button(IWin32Window& parent, unsigned int controlId);
@@ -13,6 +14,8 @@ public:
 	virtual void SetHwnd(HWND hWnd) override;
 	virtual HWND GetHwnd() override;
 	
+	virtual ~Button();
+
 protected:
 	HWND hwndButton;
 	IWin32Window& parent;

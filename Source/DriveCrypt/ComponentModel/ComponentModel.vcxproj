@@ -151,7 +151,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Button.h" />
     <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\ComponentFactory.h" />
     <ClInclude Include="Headers\ComponentModel.h" />

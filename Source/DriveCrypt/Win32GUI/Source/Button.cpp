@@ -1,6 +1,5 @@
 #include "../Headers/stdafx.h"
-#include "../../ComponentModel/Headers/IWin32Window.h"
-#include "../../ComponentModel/Headers/Button.h"
+#include "../Headers/Button.h"
 #include "../../Win32GUI/Headers/StaticFunctions.h"
 #include  <Commctrl.h>
 
@@ -50,3 +49,5 @@ HWND Button::GetHwnd()
 {
 	return hwndButton;
 }
+
+Button::~Button() { }

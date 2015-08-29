@@ -61,7 +61,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Comctl32.lib;$(SolutionDir)$(Configuration)\ComponentModel.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -95,6 +95,7 @@
     <ClCompile Include="Source\Win32GUI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Button.h" />
     <ClInclude Include="Headers\ClientService.h" />
     <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\Environment.h" />

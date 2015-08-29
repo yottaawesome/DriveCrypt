@@ -1,0 +1,45 @@
+DEBUGGING COMMON PROBLEMS IN MSVC++
+
+*** PROBLEM ***
+Linker issues with using classes (including inheriting) from DLLs. Usually manifests as an undefined symbol at link-time.
+
+*** RESOLUTION *** 
+Confirm that all class members are defined and that you are linking to the DLL's .lib library in Project Propeties Linker > Input > Additional Dependencies.
+Make sure the build order is also correct. This problem can also occur if circular dependencies exist, and care should be taken to avoid this state.
+
+===========================
+
+*** PROBLEM ***
+Difficulties in exporting templates from DLLs. Usually manifests as an undefined symbol at link-time.
+
+*** RESOLUTION *** 
+It's best to avoid exporting template types from DLLs. If a class has template methods or members, do not mark them as exportable with __declspec(__dllexport).
+This approach is fine, as a partial export of a class' members does not usually cause issues.
+Template types from DLLs can not usually be successfully generated if the template arguments are unknown to the DLL. This can be overcome by defining
+the correct template specialization within the DLL, but this prevents clients from using arbitrary types on templates.
+
+===========================
+
+*** PROBLEM ***
+DLL is not generating exports.
+
+*** RESOLUTION *** 
+Confirm that the DLL has members marked with its export macro.
+
+===========================
+
+*** PROBLEM ***
+Compiler generates warnings about shared directories during build.
+
+*** RESOLUTION *** 
+Avoid having projects use the same intermediate directories for compilation. Set "Project Properties > Intermediate Directory" to "$(Configuration)\$(ProjectName)\"
+
+===========================
+
+*** PROBLEM ***
+Runtime exception: "The value of ESP was not properly saved across a function call"
+
+*** RESOLUTION *** 
+Confirm that calling conventions match. This problem can also occur if a type inherits from a type defined in a DLL, and overrides a member but specifies a different access level for that member.
+The problem then occurs at runtime when invoking that member through via a reference or pointer of the superclass type. 
+In this case, change the access level to match the access level of inherited type's overriden member.

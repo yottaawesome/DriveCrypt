@@ -1,8 +1,9 @@
 #pragma once
 #include "Common.h"
+#include "stdafx.h"
 #include  <Commctrl.h>
 
-class IWin32Application
+class COMPONENTMODEL_API IWin32Application
 {
 public:
 	virtual void Initialize() = 0;
@@ -10,4 +11,5 @@ public:
 	virtual WNDPROC GetWindowMessagePump() = 0;
 	virtual SUBCLASSPROC GetControlMessagePump() = 0;
 	virtual HINSTANCE GetInstance() = 0;
+	virtual ~IWin32Application() = 0;
 };

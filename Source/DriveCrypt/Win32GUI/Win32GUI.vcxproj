@@ -98,12 +98,10 @@
     <ClInclude Include="Headers\ClientService.h" />
     <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\Environment.h" />
-    <ClInclude Include="Headers\Globals.h" />
     <ClInclude Include="Headers\ServiceFactories.h" />
     <ClInclude Include="Headers\StaticFunctions.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\targetver.h" />
-    <ClInclude Include="Headers\Variadic.h" />
     <ClInclude Include="Headers\Win32Application.h" />
     <ClInclude Include="Headers\Win32GUI.h" />
   </ItemGroup>

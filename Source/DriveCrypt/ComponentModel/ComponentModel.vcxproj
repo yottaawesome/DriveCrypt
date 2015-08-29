@@ -151,10 +151,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Button.h" />
+    <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\ComponentFactory.h" />
     <ClInclude Include="Headers\ComponentModel.h" />
     <ClInclude Include="Headers\Concurrency.h" />
     <ClInclude Include="Headers\Console.h" />
+    <ClInclude Include="Headers\IFactory.h" />
+    <ClInclude Include="Headers\IWin32Application.h" />
+    <ClInclude Include="Headers\IWin32Control.h" />
+    <ClInclude Include="Headers\IWin32Window.h" />
     <ClInclude Include="Headers\MemoFree.h" />
     <ClInclude Include="Headers\stdafx.h" />
     <ClInclude Include="Headers\targetver.h" />

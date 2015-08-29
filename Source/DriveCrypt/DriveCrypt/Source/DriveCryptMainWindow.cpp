@@ -1,4 +1,4 @@
-#include "..\Headers\DriveCryptMainWindow.h"
+#include "../Headers/DriveCryptMainWindow.h"
 #include "../Headers/Exceptions.h"
 
 using namespace std;

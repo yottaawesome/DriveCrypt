@@ -1,9 +1,8 @@
 #include "../Headers/stdafx.h"
-#include "../../Shared/ExportedHeaders/IWin32Window.h"
-#include "../../Shared/ExportedHeaders/Button.h"
+#include "../../ComponentModel/Headers/IWin32Window.h"
+#include "../../ComponentModel/Headers/Button.h"
 #include "../../Win32GUI/Headers/StaticFunctions.h"
 #include  <Commctrl.h>
-#include "../Headers/Variadic.h"
 
 Button::Button(IWin32Window& parent, unsigned int controlId) : parent(parent), controlId(controlId) { }
 Button::Button(IWin32Window* parent, unsigned int controlId) : parent(*parent), controlId(controlId)  { }

@@ -1,4 +1,4 @@
-#include "../../Shared/ExportedHeaders/IWin32Window.h"
+#include "../../ComponentModel/Headers/IWin32Window.h"
 #include "../Headers/Common.h"
 #include "../Headers/StaticFunctions.h"
 #include  <Commctrl.h>

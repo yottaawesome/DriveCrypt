@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Common.h"
-#include "../../Shared/ExportedHeaders/IWin32Application.h"
+#include "../../ComponentModel/Headers/IWin32Application.h"
 #include  <Commctrl.h>
 
 /// Abstract base class for Win32 GUI Application

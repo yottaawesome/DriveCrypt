@@ -15,6 +15,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstanc
 	
 	System::Initialize();
 	Concurrency::Initialize();
+	Win32GUI::Initialize();
 
 	Memo<IConsole> console = ComponentFactory::Instantiate<IConsole>();
 	console->PrintLine(L"Hello, world!");

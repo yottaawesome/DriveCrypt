@@ -1,21 +1,15 @@
+#include "../Headers/stdafx.h"
+#include "../Headers/Resource.h"
 #include "../Headers/DriveCryptMainWindow.h"
-#include "../Headers/Exceptions.h"
 
 using namespace std;
 
-DriveCryptMainWindow::DriveCryptMainWindow(IWin32Application* application) : application(application)
-{
-	if (application == nullptr)
-		throw DriveCryptException("Null Application pointer to Main Window");
-}
-
-DriveCryptMainWindow::DriveCryptMainWindow(IWin32Application& application) : application(&application)
+DriveCryptMainWindow::DriveCryptMainWindow(WNDPROC wndProc, HINSTANCE hInstance) : wndProc(wndProc), hInstance(hInstance)
 {
 }
 
 void DriveCryptMainWindow::Initialize()
 {
-	auto hInstance = this->application->GetInstance();
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadString(hInstance, IDC_DRIVECRYPT, szWindowClass, MAX_LOADSTRING);
 
@@ -24,7 +18,7 @@ void DriveCryptMainWindow::Initialize()
 	wcex.cbSize = sizeof(WNDCLASSEX);
 
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc = this->application->GetWindowMessagePump();
+	wcex.lpfnWndProc = wndProc;
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;

@@ -6,8 +6,9 @@ Linker issues with using classes (including inheriting) from DLLs. Usually manif
 *** RESOLUTION *** 
 Confirm that all class members are defined and that you are linking to the DLL's .lib library in Project Propeties Linker > Input > Additional Dependencies.
 Make sure the build order is also correct. This problem can also occur if circular dependencies exist, and care should be taken to avoid this state.
+While mutual imports can be accomplished (see https://msdn.microsoft.com/en-us/library/fdy23fx6.aspx), this is an indication of poor library design.
 
-===========================
+==================================================================================================================================================================
 
 *** PROBLEM ***
 Difficulties in exporting templates from DLLs. Usually manifests as an undefined symbol at link-time.
@@ -18,7 +19,7 @@ This approach is fine, as a partial export of a class' members does not usually 
 Template types from DLLs can not usually be successfully generated if the template arguments are unknown to the DLL. This can be overcome by defining
 the correct template specialization within the DLL, but this prevents clients from using arbitrary types on templates.
 
-===========================
+==================================================================================================================================================================
 
 *** PROBLEM ***
 DLL is not generating exports.
@@ -26,7 +27,7 @@ DLL is not generating exports.
 *** RESOLUTION *** 
 Confirm that the DLL has members marked with its export macro.
 
-===========================
+==================================================================================================================================================================
 
 *** PROBLEM ***
 Compiler generates warnings about shared directories during build.
@@ -34,12 +35,66 @@ Compiler generates warnings about shared directories during build.
 *** RESOLUTION *** 
 Avoid having projects use the same intermediate directories for compilation. Set "Project Properties > Intermediate Directory" to "$(Configuration)\$(ProjectName)\"
 
-===========================
+==================================================================================================================================================================
 
 *** PROBLEM ***
 Runtime exception: "The value of ESP was not properly saved across a function call"
 
 *** RESOLUTION *** 
 Confirm that calling conventions match. This problem can also occur if a type inherits from a type defined in a DLL, and overrides a member but specifies a different access level for that member.
-The problem then occurs at runtime when invoking that member through via a reference or pointer of the superclass type. 
-In this case, change the access level to match the access level of inherited type's overriden member.
+The problem then occurs at runtime when invoking that member via a reference or pointer of the superclass type. In this case, change the access level to match the access level of inherited type's overriden member.
+
+==================================================================================================================================================================
+
+*** PROBLEM ***
+Project converted to DLL, but cannot export properly with an export macro.
+
+*** RESOLUTION *** 
+In the DLL project, Project Properties > C/C++ > Preprocessor > Preprocessor Definitions should contain an appropriate macro (e.g WIN32GUI_EXPORTS, or whatever) for the DLL.
+A proper macro for exporting and importing DLL members can then be defined like so below. WIN32GUI_API can be named anything.
+
+#ifdef WIN32GUI_EXPORTS
+#define WIN32GUI_API __declspec(dllexport)
+#else
+#define WIN32GUI_API __declspec(dllimport)
+#endif
+
+==================================================================================================================================================================
+
+*** PROBLEM ***
+Destructors are not invoked in the correct order for types implementing a pure virtual class.
+
+*** RESOLUTION *** 
+A virtual destructor needs to be on the pure virtual class, but it can be pure (= 0). However, it needs to be defined if the pure virtual class is inherited.
+This can easily be done like so, usually somewhere for defining virtual destructors for pure virtual types, and can be inlined.
+
+// A.h
+class A
+{
+public:
+	virtual void DoOperation() = 0;
+	virtual ~A() = 0;
+};
+
+// A.cpp
+inline A::~A() { }
+
+==================================================================================================================================================================
+
+*** PROBLEM ***
+Difficulties in invoking members of a type with const specifier on reference.
+
+*** RESOLUTION *** 
+A const modifier indicates that only methods that are marked with const can be invoked from that reference. Function members not marked with const cannot be invoked.
+A const function cannot modify any class-level variables, unless they are marked with the mutable modifier.
+
+class A
+{
+public:
+	void Blah() const; // Can be invoked from a const reference, e.g. const A&.
+
+protected:
+	mutable int x; // Blah can modify this variable, but would not be able to do so if it did not have the mutable modifier.
+};
+
+==================================================================================================================================================================

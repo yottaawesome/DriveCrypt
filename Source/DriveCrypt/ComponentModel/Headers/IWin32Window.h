@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Common.h"
-#include "IWin32Application.h"
+#include "stdafx.h"
 
 class COMPONENTMODEL_API IWin32Window
 {
@@ -23,4 +22,13 @@ class COMPONENTMODEL_API IButton : public IWin32Control
 {
 public:
 	virtual ~IButton() = 0;
+};
+
+class COMPONENTMODEL_API IFormBuilder
+{
+public:
+	virtual IWin32Window* CreateMainWindow() = 0;
+	virtual void AddButton(IWin32Window* window) = 0;
+
+	virtual ~IFormBuilder() = 0;
 };

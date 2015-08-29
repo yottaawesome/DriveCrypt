@@ -42,16 +42,10 @@
     <ClInclude Include="Headers\Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\IFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\IWin32Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\IWin32Window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Headers\IWin32Control.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

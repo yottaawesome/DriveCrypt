@@ -90,7 +90,6 @@
     <ClInclude Include="Headers\Common.h" />
     <ClInclude Include="Headers\DriveCrypt.h" />
     <ClInclude Include="Headers\DriveCryptApplication.h" />
-    <ClInclude Include="Headers\DriveCryptMainWindow.h" />
     <ClInclude Include="Headers\Exceptions.h" />
     <ClInclude Include="Headers\Resource.h" />
     <ClInclude Include="Headers\stdafx.h" />
@@ -99,7 +98,6 @@
   <ItemGroup>
     <ClCompile Include="Source\DriveCrypt.cpp" />
     <ClCompile Include="Source\DriveCryptApplication.cpp" />
-    <ClCompile Include="Source\DriveCryptMainWindow.cpp" />
     <ClCompile Include="Source\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>

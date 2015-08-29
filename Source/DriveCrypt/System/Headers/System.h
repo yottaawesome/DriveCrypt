@@ -34,6 +34,7 @@ public:
 
 	virtual wstring ToWString();
 	virtual string ToString();
+
 protected:
 	wstring* wStr;
 	string* str;

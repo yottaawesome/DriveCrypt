@@ -15,3 +15,4 @@ inline IWin32Control::~IWin32Control() { }
 inline IButton::~IButton() { }
 inline IWin32Window::~IWin32Window() { };
 inline IWin32Application::~IWin32Application() { };
+inline IFormBuilder::~IFormBuilder() { }

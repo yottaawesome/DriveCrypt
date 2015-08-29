@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Common.h"
-#include "../../ComponentModel/Headers/ComponentModel.h"
 #include "../Headers/WIN32GUI.h"
 #include  <Commctrl.h>
 

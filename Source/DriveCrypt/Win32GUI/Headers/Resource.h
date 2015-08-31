@@ -17,6 +17,7 @@
 #define IDC_DRIVECRYPT			109
 #define IDC_MYICON				2
 #define ID_BUTTON1				130
+#define ID_BUTTON2				130
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1
 #endif

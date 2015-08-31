@@ -24,7 +24,7 @@ LRESULT CALLBACK Static::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 
 LRESULT CALLBACK Static::DefCtrlProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData)
 {
-	IWin32Window* btn = (IWin32Window*)dwRefData;
+	IWin32Control* btn = (IWin32Control*)dwRefData;
 
 	if (btn)
 		return btn->Process(message, wParam, lParam);

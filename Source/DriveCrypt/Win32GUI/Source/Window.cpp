@@ -1,45 +1,44 @@
 #include "../Headers/stdafx.h"
 #include "../Headers/Resource.h"
-#include "../Headers/DriveCryptMainWindow.h"
+#include "../Headers/Window.h"
+#include "../Headers/WindowClassManager.h"
 
 using namespace std;
 
-DriveCryptMainWindow::DriveCryptMainWindow(WNDPROC wndProc, HINSTANCE hInstance) : wndProc(wndProc), hInstance(hInstance)
+Window::Window(wstring& title, WNDPROC wndProc, HINSTANCE hInstance, unsigned int width, unsigned int height)
+	: width(width), height(height), title(title), wndProc(wndProc), hInstance(hInstance) { }
+
+Window::Window(wstring&& title, WNDPROC wndProc, HINSTANCE hInstance, unsigned int width, unsigned int height)
+	: width(width), height(height), title(title), wndProc(wndProc), hInstance(hInstance) { }
+
+void Window::SetTitle(wstring& title)
 {
+	this->title = title;
+	SetWindowText(hWnd, this->title.c_str());
 }
 
-void DriveCryptMainWindow::Initialize()
+void Window::SetTitle(wstring&& title)
 {
-	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-	LoadString(hInstance, IDC_DRIVECRYPT, szWindowClass, MAX_LOADSTRING);
+	this->title = title;
+	SetWindowText(hWnd, this->title.c_str());
+}
 
-	WNDCLASSEX wcex;
+void Window::Initialize()
+{
+	//LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+	//LoadString(hInstance, IDC_DRIVECRYPT, szWindowClass, MAX_LOADSTRING);
 
-	wcex.cbSize = sizeof(WNDCLASSEX);
-
-	wcex.style = CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc = wndProc;
-	wcex.cbClsExtra = 0;
-	wcex.cbWndExtra = 0;
-	wcex.hInstance = hInstance;
-	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DRIVECRYPT));
-	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-	wcex.lpszMenuName = MAKEINTRESOURCE(IDC_DRIVECRYPT);
-	wcex.lpszClassName = szWindowClass;
-	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
-
-	RegisterClassEx(&wcex);
+	auto wcex = WindowClassManager::GetDefaultWindowClass();
 
 	hWnd = CreateWindow
 		(
-			szWindowClass, // class name
-			szTitle, // window title
+			wcex.ClassName.c_str(), // class name
+			title.c_str(), // window title
 			WS_OVERLAPPEDWINDOW, // window styles
 			CW_USEDEFAULT, // initial horizontal x position
 			0,  // initial horizontal y position
-			CW_USEDEFAULT,  // window width
-			0, // window width
+			width,  // window width
+			height, // window height
 			NULL, // parent HWND
 			NULL, // HWND menu/child
 			hInstance, // instance of the module
@@ -54,7 +53,13 @@ void DriveCryptMainWindow::Initialize()
 	UpdateWindow(hWnd);
 }
 
-int DriveCryptMainWindow::Process(UINT message, WPARAM wParam, LPARAM lParam)
+void Window::AddControl(IWin32Control* control)
+{
+	if(control != nullptr)
+		control->Initialize(this);
+}
+
+int Window::Process(UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
@@ -92,12 +97,12 @@ int DriveCryptMainWindow::Process(UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-void DriveCryptMainWindow::SetHwnd(HWND hWnd)
+void Window::SetHwnd(HWND hWnd)
 {
 	this->hWnd = hWnd;
 }
 
-HWND DriveCryptMainWindow::GetHwnd()
+HWND Window::GetHwnd()
 {
 	return this->hWnd;
 }

@@ -15,6 +15,7 @@ public:
 	virtual ~Memo();
 
 	virtual T* operator->();
+	virtual T* operator*();
 	virtual bool operator==(T* comparison);
 	virtual void operator=(T* newObject);
 
@@ -37,6 +38,12 @@ Memo<T>::Memo() : hasValidPointer(false), object(nullptr)
 	//std::wstring s = std::to_wstring(nMemoryModel) + L"\n";
 	//OutputDebugString(s.c_str());
 //	OutputDebugString(_T("1\n"));
+}
+
+template<typename T>
+T* Memo<T>::operator*()
+{
+	return object;
 }
 
 template<typename T>

@@ -89,18 +89,19 @@
   <ItemGroup>
     <ClCompile Include="Source\dllmain.cpp" />
     <ClCompile Include="Source\Button.cpp" />
-    <ClCompile Include="Source\DriveCryptMainWindow.cpp" />
+    <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Factories.cpp" />
     <ClCompile Include="Source\FormBuilder.cpp" />
     <ClCompile Include="Source\StaticFunctions.cpp" />
     <ClCompile Include="Source\Win32Application.cpp" />
     <ClCompile Include="Source\Win32GUI.cpp" />
+    <ClCompile Include="Source\WindowClassManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Button.h" />
     <ClInclude Include="Headers\ClientService.h" />
     <ClInclude Include="Headers\Common.h" />
-    <ClInclude Include="Headers\DriveCryptMainWindow.h" />
+    <ClInclude Include="Headers\Window.h" />
     <ClInclude Include="Headers\FormBuilder.h" />
     <ClInclude Include="Headers\Resource.h" />
     <ClInclude Include="Headers\ServiceFactories.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Headers\targetver.h" />
     <ClInclude Include="Headers\Win32Application.h" />
     <ClInclude Include="Headers\Win32GUI.h" />
+    <ClInclude Include="Headers\WindowClassManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DriveCrypt.rc" />

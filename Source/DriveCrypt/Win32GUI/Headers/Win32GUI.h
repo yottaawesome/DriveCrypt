@@ -11,8 +11,13 @@ extern WIN32GUI_API int meaningOfLife;
 
 class WIN32GUI_API FormBuilder : public IFormBuilder
 {
-	virtual IWin32Window* CreateMainWindow();
-	virtual void AddButton(IWin32Window* window);
+public:
+	FormBuilder();
+	virtual IWin32Window* CreateMainWindow(wstring& title, unsigned int width = 0, unsigned int height = 0) override;
+	virtual IWin32Window* CreateMainWindow(wstring&& title, unsigned int width = 0, unsigned int height = 0) override;
+
+	virtual void AddButton(IWin32Window* window, wstring& text, void(*onClick)(), unsigned int width = 0, unsigned int height = 0) override;
+	virtual void AddButton(IWin32Window* window, wstring&& text, void(*onClick)(), unsigned int width = 0, unsigned int height = 0) override;
 
 	virtual ~FormBuilder();
 };

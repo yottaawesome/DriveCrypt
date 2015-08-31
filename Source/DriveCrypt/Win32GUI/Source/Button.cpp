@@ -3,24 +3,37 @@
 #include "../../Win32GUI/Headers/StaticFunctions.h"
 #include  <Commctrl.h>
 
-Button::Button(IWin32Window& parent, unsigned int controlId) : parent(parent), controlId(controlId) { }
-Button::Button(IWin32Window* parent, unsigned int controlId) : parent(*parent), controlId(controlId)  { }
-Button::Button(IWin32Window* parent, unsigned int controlId, unsigned int width, unsigned int height) : parent(*parent), controlId(controlId), width(width), height(height)  { }
-
-void Button::Initialize()
+Button::Button(unsigned int controlId, wstring& text, void (*onClick)(), unsigned int width, unsigned int height) 
+	: parent(nullptr), text(text), onClick(onClick), controlId(controlId), width(width), height(height)  
 {
+	width = width > 0 ? width : 100;
+	height = height > 0 ? height : 100;
+	if (text.length() == 0)
+		this->text = L"Default";
+}
+
+void Button::Initialize(IWin32Window* parent)
+{
+	if (parent == nullptr) 
+	{
+		OutputDebugString(L"Cannot initialize a control without a parent");
+		return;
+	}
+	this->parent = parent;
+
+	HWND parentHwnd = parent->GetHwnd();
 	hwndButton = CreateWindow
 	(
 		L"BUTTON",  // Predefined class; Unicode assumed 
-		L"OK",      // Button text 
+		this->text.c_str(),      // Button text 
 		WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
 		10,         // x position 
 		10,         // y position 
-		100,        // Button width
-		100,        // Button height
-		parent.GetHwnd(),     // Parent window
+		width,        // Button width
+		height,        // Button height
+		parentHwnd,     // Parent window
 		(HMENU)controlId,       // No menu.
-		(HINSTANCE)GetWindowLong(parent.GetHwnd(), GWL_HINSTANCE),
+		(HINSTANCE)GetWindowLong(parentHwnd, GWL_HINSTANCE),
 		this
 	);
 	
@@ -32,7 +45,7 @@ int Button::Process(UINT message, WPARAM wParam, LPARAM lParam)
 	switch (message)
 	{
 		case WM_LBUTTONUP:
-			MessageBox(nullptr, L"Blah", L"Blah", MB_OK);
+			this->onClick();
 		default:
 			return DefSubclassProc(hwndButton, message, wParam, lParam);
 	}

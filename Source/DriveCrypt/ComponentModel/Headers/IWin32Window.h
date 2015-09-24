@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include <string>
+#include <functional>
 
 using namespace std;
 
@@ -42,8 +43,8 @@ public:
 	virtual IWin32Window* CreateMainWindow(wstring& title, unsigned int width = 0, unsigned int height = 0) = 0;
 	virtual IWin32Window* CreateMainWindow(wstring&& title, unsigned int width = 0, unsigned int height = 0) = 0;
 
-	virtual void AddButton(IWin32Window* window, wstring& text, void(*onClick)(), unsigned int width = 0, unsigned int height = 0) = 0;
-	virtual void AddButton(IWin32Window* window, wstring&& text, void(*onClick)(), unsigned int width = 0, unsigned int height = 0) = 0;
+	virtual void AddButton(IWin32Window* window, wstring& text, function<void(void)>& onClick, unsigned int width = 0, unsigned int height = 0) = 0;
+	virtual void AddButton(IWin32Window* window, wstring&& text, function<void(void)>& onClick, unsigned int width = 0, unsigned int height = 0) = 0;
 
 	virtual ~IFormBuilder() = 0;
 };

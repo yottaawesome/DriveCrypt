@@ -3,7 +3,7 @@
 #include "../../Win32GUI/Headers/StaticFunctions.h"
 #include  <Commctrl.h>
 
-Button::Button(unsigned int controlId, wstring& text, void (*onClick)(), unsigned int width, unsigned int height) 
+Button::Button(unsigned int controlId, wstring& text, FunctionHandler& onClick, unsigned int width, unsigned int height)
 	: parent(nullptr), text(text), onClick(onClick), controlId(controlId), width(width), height(height)  
 {
 	width = width > 0 ? width : 100;
@@ -33,7 +33,7 @@ void Button::Initialize(IWin32Window* parent)
 		height,        // Button height
 		parentHwnd,     // Parent window
 		(HMENU)controlId,       // No menu.
-		(HINSTANCE)GetWindowLong(parentHwnd, GWL_HINSTANCE),
+		(HINSTANCE)GetWindowLongPtr(parentHwnd, GWL_HINSTANCE),
 		this
 	);
 	

@@ -4,6 +4,9 @@
 #include "../../Win32GUI/Headers/Win32Application.h"
 #include "../../ComponentModel/Headers/ComponentModel.h"
 #include "../../MemoryModel/Headers/Pointer.h"
+#include <functional>
+
+using namespace std;
 
 class DriveCrypt : public Win32Application
 {
@@ -20,6 +23,6 @@ protected:
 	
 	virtual HACCEL GetAccelerator() override;
 	virtual void LoadWin32Accelerators() override;
-	void(*callBack)();
-	void(*callBack2)();
+	function<void(void)> callBack;
+	function<void(void)> callBack2;
 };

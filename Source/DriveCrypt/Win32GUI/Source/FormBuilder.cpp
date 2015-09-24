@@ -24,13 +24,13 @@ IWin32Window* FormBuilder::CreateMainWindow(wstring&& title, unsigned int width,
 //TODO
 FormBuilder::FormBuilder() { }
 
-void FormBuilder::AddButton(IWin32Window* window, wstring& text, void(*onClick)(), unsigned int width, unsigned int height)
+void FormBuilder::AddButton(IWin32Window* window, wstring& text, function<void(void)>& onClick, unsigned int width, unsigned int height)
 {
 	Button* button = new Button(ID_BUTTON1, text, onClick, width, height);
 	window->AddControl(button);
 }
 
-void FormBuilder::AddButton(IWin32Window* window, wstring&& text, void(*onClick)(), unsigned int width, unsigned int height)
+void FormBuilder::AddButton(IWin32Window* window, wstring&& text, function<void(void)>& onClick, unsigned int width, unsigned int height)
 {
 	Button* button = new Button(ID_BUTTON1, text, onClick, width, height);
 	window->AddControl(button);

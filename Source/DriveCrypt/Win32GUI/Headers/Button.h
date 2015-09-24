@@ -1,11 +1,12 @@
 #pragma once
 #include "../../ComponentModel/Headers/ComponentModel.h"
 #include "../Headers/Win32GUI.h"
+#include "EventHandler.h"
 
 class Button : public IButton
 {
 public:
-	WIN32GUI_API Button(unsigned int controlId, wstring& text, void (*onClick)(), unsigned int width, unsigned int height);
+	WIN32GUI_API Button(unsigned int controlId, wstring& text, FunctionHandler& onClick, unsigned int width, unsigned int height);
 
 	WIN32GUI_API virtual void Initialize(IWin32Window* parent) override;
 	WIN32GUI_API virtual int Process(UINT message, WPARAM wParam, LPARAM lParam) override;
@@ -21,5 +22,6 @@ protected:
 	unsigned int const controlId;
 	unsigned int width;
 	unsigned int height;
-	void (*onClick)();
+	//void (*onClick)();
+	FunctionHandler& onClick;
 };

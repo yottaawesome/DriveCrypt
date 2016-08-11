@@ -1,66 +1,8 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-/Source/DriveCrypt/Debug
-/Source/DriveCrypt/DriveCrypt/Debug
-/Source/DriveCrypt/Shared/Debug
-/Source/DriveCrypt/Static.String/Debug
-/Source/DriveCrypt/Static.Win32.DLLWrapper/Debug
-/Source/DriveCrypt/*.opensdf
-/Source/DriveCrypt/*.sdf
-/Source/DriveCrypt/ipch
-/Source/DriveCrypt/*.suo
-/Source/DriveCrypt/Static.Win32Application/Debug
-/Source/DriveCrypt/DriveCrypt/Debug
-/Source/DriveCrypt/Experimental/Debug
-/Source/DriveCrypt/Static.MemoryManagement/Debug
-/Source/DriveCrypt/Experimental/*.user
+ipch/
 *.aps
-/Source/DriveCrypt/MemoryModel/Debug
-/Source/DriveCrypt/Concurrency/Debug
-/Source/DriveCrypt/Cryptography/Debug
-/Source/DriveCrypt/Utility/Debug
-/Source/DriveCrypt/System/Debug
-/Source/DriveCrypt/System/Release
-Release
-Debug
+Release/
+Debug/
+*.suo
+*.user
+.vs/
+*.sdf

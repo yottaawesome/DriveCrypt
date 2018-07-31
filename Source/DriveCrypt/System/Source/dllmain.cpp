@@ -4,12 +4,6 @@
 #include <locale>
 #include <codecvt>
 
-wstring SyString(string s)
-{
-	static wstring_convert<codecvt_utf8_utf16<wchar_t>> converter;
-	return wstring(converter.from_bytes(s));
-}
-
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
 	/*Invocable<void, int> f = [](int i) 
